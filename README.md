@@ -8,26 +8,26 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ```markdown
 
-# Manual - Mostra todos os comandos
+#Manual - Mostra todos os comandos
 1. git 
 
-# Comando para colocar o repositório na máquina local
+#Comando para colocar o repositório na máquina local
 2. git clone [site]
 
-# Comando para dar o estado do teu repositório
+#Comando para dar o estado do teu repositório
 3. git status
 
-# Comando de quem quer alocar ficheiros no repositório
+#Comando de quem quer alocar ficheiros no repositório
 4. git add [file]   -> Adiciona os ficheiros que quiseres
 	- git add -A/. -> Adicona todos os ficheiros que estão na diretoria local
 5. git push 	 -> Adiciona online para todos verem
 6. git commit -m "a message" -> Envia a mensagem que quisermos
 	- git commit -> É usado quando existe conflitos (para sair do editor ":wq")
   
-# Comando de quem quer retirar os ficheiros do repositório
+#Comando de quem quer retirar os ficheiros do repositório
 7. git pull
 
-# Comando para criar uma branch
+#Comando para criar uma branch
 8. git branch -> Ver as derivações da árvore
 	- git branch [a name]  -> Cria uma cópia com o nome dado 
 9. git checkout [The name of a branch] -> Muda para o nome do branch que lhe passamos 
