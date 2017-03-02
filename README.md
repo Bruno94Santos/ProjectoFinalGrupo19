@@ -4,34 +4,33 @@ You can use the [editor on GitHub](https://github.com/Bruno94Santos/ProjectoFina
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Comandos github
 
 ```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+# Manual - Mostra todos os comandos
+1. git 
 
-- Bulleted
-- List
+# Comando para colocar o repositório na máquina local
+2. git clone [site]
 
-1. Numbered
-2. List
+# Comando para dar o estado do teu repositório
+3. git status
 
-**Bold** and _Italic_ and `Code` text
+# Comando de quem quer alocar ficheiros no repositório
+4. git add [file]   -> Adiciona os ficheiros que quiseres
+	- git add -A/. -> Adicona todos os ficheiros que estão na diretoria local
+5. git push 	 -> Adiciona online para todos verem
+6. git commit -m "a message" -> Envia a mensagem que quisermos
+	- git commit -> É usado quando existe conflitos (para sair do editor ":wq")
+  
+# Comando de quem quer retirar os ficheiros do repositório
+7. git pull
 
-[Link](url) and ![Image](src)
+# Comando para criar uma branch
+8. git branch -> Ver as derivações da árvore
+	- git branch [a name]  -> Cria uma cópia com o nome dado 
+9. git checkout [The name of a branch] -> Muda para o nome do branch que lhe passamos 
+
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Bruno94Santos/ProjectoFinalGrupo19/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
