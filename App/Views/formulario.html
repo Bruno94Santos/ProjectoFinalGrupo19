@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="formularioSignUp">
+<head>
+	<meta charset="UTF-8f">
+	<title>Sign up</title>
+
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+	<script src="../Controllers/formularioController.js"></script>
+	
+	<style>
+	.selecionado{
+		background-color: blue;
+	}
+	.negrito{
+		font-weight: bold;
+	}
+	</style>
+
+</head>
+<body ng-controller="signUpController">
+<div class="jumbotron">
+	<!--<h4 ng-bind="app"></h4>-->
+	<h4>{{app}}</h4>
+	<table class="table table-striped">
+		<tr>
+			<th></th>
+			<th>Nome</th>
+			<th>Contacto</th>
+			<th>Conta</th>
+		</tr>
+		<tr ng-class="{negrito:contacto.selecionado}" ng-repeat="contacto in contactos">
+			<td><input type="checkbox" ng-model="contacto.selecionado"/> </td>
+			<td>{{contacto.nome}}</td>
+			<td>{{contacto.telefone}}</td>
+			<td>{{contacto.conta.nome}}</td>
+			<td style="width: 10px; height: 10px;" ng-style="{'background-color': contacto.cor}"></td>
+		</tr>
+	</table>
+	<form name="contactoForm">
+		<input class="form-control" type="text" name ="nome" placeholder="Nome"  ng-model="contacto.nome" ng-required="true" ng-minlength="10"></input>
+		<input class="form-control" type="text" name = "telefone" placeholder="Telefone" ng-model="contacto.telefone" ng-required="true"></input>
+		
+		<select class="form-control" ng-model="contacto.conta" ng-options="conta.nome for conta in contas">
+			<option value="">Seleciona o tipo de conta</option>
+		</select>
+	</form>
+	
+	<div ng-show="contactoForm.nome.$invalid && contactoForm.nome.$dirty" class="alert alert-danger"> Preencha o campo nome</div>
+	<div ng-show="contactoForm.nome.$invalid && contactoForm.nome.$dirty" class="alert alert-danger"> O campo nome deve ter min 10 caracteres</div>
+
+
+	<div ng-show="contactoForm.telefone.$invalid && contactoForm.telefone.$dirty" class="alert alert-danger"> Preencha o campo telefone</div>
+	<button class="btn btn-primary btn-block" ng-click="AddContacto(contacto)" ng-disabled="!contacto.nome || !contacto.telefone" >Adicionar contacto
+	</button>
+	<button class="btn btn-danger btn-block" ng-click="deleteContacto(contactos)" ng-show="isSelecionado(contactos)">Apagar contacto
+	</button>
+</div>
+<div ng-include="'footer.html'"></div>
+</body >
+</html>
