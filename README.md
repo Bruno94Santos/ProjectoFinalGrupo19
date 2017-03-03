@@ -33,4 +33,6 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 9. git checkout [The name of a branch] -> Muda para o nome do branch que lhe passamos 
 
 ```
+### Convenções
+
 
