@@ -35,4 +35,10 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 ```
 ### Convenções
 
+## Todos os nomes em ingles
+## JS - variáveis CameCase, funções nomes descritivos ex MakeUpload
+## CSS - http://www.runopencode.com/index.php/how-we-code/css-and-less-coding-standards
+## Comentarios github sucintos e descritivos, da seguinte maneira #USxx ex #Us1 - Implementation, 
+## Correção de erros de uma user Story da seguinte maneira fixBug - #usxx ex fixBug - #Us1
+
 
