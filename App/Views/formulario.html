@@ -20,14 +20,13 @@
 </head>
 <body ng-controller="signUpController">
 <div class="jumbotron">
-	<!--<h4 ng-bind="app"></h4>-->
 	<h4>{{app}}</h4>
 	<table class="table table-striped">
 		<tr>
 			<th></th>
 			<th>Nome</th>
 			<th>Contacto</th>
-			<th>Conta</th>
+			<th>Tipo de conta</th>
 		</tr>
 		<tr ng-class="{negrito:contacto.selecionado}" ng-repeat="contacto in contactos">
 			<td><input type="checkbox" ng-model="contacto.selecionado"/> </td>
