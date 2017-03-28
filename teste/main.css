@@ -16,7 +16,13 @@
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
-/* The navigation menu links */
+/*@media screen and (min-width:500px){
+    #foto {
+        background-color: yellow;
+    }
+}*/
+
+    /* The navigation menu links */
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -57,7 +63,8 @@
 }
 
 
-/*profile*/
+/*PROFILE*/
+/****************************************************************************************/
 body{padding-top:30px;}
 
 .glyphicon {  margin-bottom: 10px;margin-right: 10px;}
@@ -67,9 +74,50 @@ small {
     line-height: 1.428571429;
     color: #999;
 }
+#botao{
+    margin-left: 10%;
+}
 
 /* INSERT MUSIC*/
+/*****************************************************************************************/
 .formYes{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+/* Hiding the checkbox, but allowing it to be focused */
+.badgebox
+{
+    opacity: 0;
+}
+
+.badgebox + .badge
+{
+    /* Move the check mark away when unchecked */
+    text-indent: -999999px;
+    /* Makes the badge's width stay the same checked and unchecked */
+    width: 27px;
+}
+
+.badgebox:focus + .badge
+{
+    /* Set something to make the badge looks focused */
+    /* This really depends on the application, in my case it was: */
+
+    /* Adding a light border */
+    box-shadow: inset 0px 0px 5px;
+    /* Taking the difference out of the padding */
+}
+
+.badgebox:checked + .badge
+{
+    /* Move the check mark back when checked */
+    text-indent: 0;
+}
+
+/**********************************************************/
+/* dashboard*/
+.thumbnail{
     margin-left: 10%;
     margin-right: 10%;
 }

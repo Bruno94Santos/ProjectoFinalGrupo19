@@ -41,6 +41,12 @@
 </head>
 <body>
 <div class="formYes">
+    <div class="MusicOrVideo">
+        <br>
+        <label class="radio-inline"><input type="radio" name="optradio">Music</label>
+        <label class="radio-inline"><input type="radio" name="optradio">Video</label>
+    </div>
+    <br>
     <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">Name</label>
         <div class="col-10">
@@ -57,8 +63,25 @@
         <div class="col-10">
             <label class="control-label">Select File</label>
             <input id="input-1" type="file" class="file">
+            <br>
+            <progress value="10" max="100"></progress>
+
         </div>
     </div>
+
+    <div class="container">
+        <div class="row col-10">
+            <br>
+            <label for="info1" class="btn btn-info">Tag1 <input type="checkbox" id="info1" class="badgebox"><span class="badge">&check;</span></label>
+            <label for="info2" class="btn btn-info">Tag2 <input type="checkbox" id="info2" class="badgebox"><span class="badge">&check;</span></label>
+            <label for="info3" class="btn btn-info">Tag3 <input type="checkbox" id="info3" class="badgebox"><span class="badge">&check;</span></label>
+            <label for="info4" class="btn btn-info">Tag4 <input type="checkbox" id="info4" class="badgebox"><span class="badge">&check;</span></label>
+            <label for="info5" class="btn btn-info">Tag5 <input type="checkbox" id="info5" class="badgebox"><span class="badge">&check;</span></label>
+            <label for="info6" class="btn btn-info">Tag6 <input type="checkbox" id="info6" class="badgebox"><span class="badge">&check;</span></label>
+        </div>
+    </div>
+    <br>
+
     <div class="form-group row">
         <div class="col-10">
             <button type="submit" class="btn btn-primary">Submit</button>
