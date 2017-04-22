@@ -67,32 +67,6 @@
 		}
 	}
 	
-	/*
-	//get single artist
-	function get_artist($artist_id){
-		$result = $conn->query("SELECT * FROM artists WHERE artist_id = $artist_id");
-		if($result){
-			if (mysqli_num_rows($result)>0){
-				$linha=mysqli_fetch_assoc($result);
-				$artist_user_id=$linha["id"];
-				$artist_picture=$linha["picture"];
-				$description=$linha["description"];
-				$location=$linha["location"];
-				$name=$linha["name"];
-				$rating_sum=$linha["rating_sum"];
-				$rating_n=$linha["rating_n"];
-				$rating=$rating_n/$rating_sum;
-				return array($artist_user_id,$artist_picture)
-			}
-			else{
-				echo "There was an error fetching this artist. This page might have been deleted.";
-			}
-		}
-		else{
-			echo "Could not establish connection.";
-		}
-	}
-*/
 
 	//get single artist
 	function get_artist($artist_id){
