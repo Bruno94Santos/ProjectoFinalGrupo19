@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="musInApp">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- If IE use the latest rendering engine -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Set the page to the width of the device and set the zoon level -->
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css" media="screen" />
+    <script src="angular.min.js"></script>
+    <script src="java.js"></script>
+    <title>Musin Artists</title>
+    <style>
+        .jumbotron{
+            background-color: #00AA88;
+            color:white;
+        }
+    </style>
+
+    <div class="page-header">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="myartists.html">My Artists</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="halloffame.html">Hall of Fame</a>
+            <a href="jamsessions.html">Jam Sessions</a>
+            <a href="concerts.html">Concerts</a>
+            <a href="playlists.html">Playlists</a>
+            <a href="search.html">Search</a>
+
+
+        </div>
+        <span onclick="openNav()"><a href="#" class = "btn btn-default btn-lg" role="button">Menu</a></span>
+        <div class="logo"><a href="index.html"<h1>MusIn</h1></a></div>
+        <a href="profile.html"><img src="icon.png" alt="profile" style="width:3%;"></a>
+        <a href="message.html"><img src="message.png" alt="message" style="width:4%;"> </a>
+        <div class="leftbuttons">
+            <a href="login.html" class="btn btn-primary" role="button">LogIn</a>
+            <a href="register.html" class="btn btn-primary" role="button">Register</a>
+        </div>
+    </div>
+</head>
+<body>
+<div class="container" ng-controller="profile">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            {{name}}</h4>
+                        <small><cite title="San Francisco, USA"> {{place}} <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>{{mail}}
+                            <br />
+                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">{{web}}</a>
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>{{birthday}}</p>
+                        <!-- Split button -->
+                        <div class="btn-group">
+                            <a href="artist.html" class="btn btn-primary" role="button">More Info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" ng-controller="profile">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            {{name}}</h4>
+                        <small><cite title="San Francisco, USA"> {{place}} <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>{{mail}}
+                            <br />
+                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">{{web}}</a>
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>{{birthday}}</p>
+                        <!-- Split button -->
+                        <div class="btn-group">
+                            <a href="artist.html" class="btn btn-primary" role="button">More Info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" ng-controller="profile">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            {{name}}</h4>
+                        <small><cite title="San Francisco, USA"> {{place}} <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>{{mail}}
+                            <br />
+                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">{{web}}</a>
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>{{birthday}}</p>
+                        <!-- Split button -->
+                        <div class="btn-group">
+                            <a href="artist.html" class="btn btn-primary" role="button">More Info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<body>
+
+</body>
+</html>
