@@ -201,7 +201,7 @@
 	//create event
 	if($_SESSION["loggedin"]==1){
 		$user_id=$_SESSION["id"];
-		$result = $conn->query("INSERT INTO events(creator_id,picture,event_name,event_time,location,description, sold_out,rating_sum,rating_n,is_jam) VALUES ($user_id,'$picture','$event_name','$event_time','$location','$description',FALSE,0,0,$is_jam)");
+		$result = $conn->query("INSERT INTO events(creator_id,picture,event_name,event_time,location,description, total_seats,seats_taken,price,sold_out,rating_sum,rating_n,is_jam) VALUES ($user_id,'$picture','$event_name','$event_time','$location','$description',$total_seats,0,$price,FALSE,0,0,$is_jam)");
 		if(!$result){
 			die("Error when creating event.");
 		}
@@ -361,6 +361,32 @@
 		}
 	}
 	
+
+	function get_media_by_artist($id){
+		$result = $conn->query("SELECT * FROM media WHERE artist = $id");
+		if($result){
+			while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
+				if ($output != "") {$output .= ",";}
+				$output="";
+				$output .= '{"MediaID":"'  . $linha["id"] . '",';
+				$output .= '"ArtistID":"'  . $linha["artist"] . '",';
+				$output .= '"IsSong":"'  . $linha["song"] . '",';
+				$output .= '"Description":"'  . $linha["description"] . '",';
+				$output .= '"Media":"'  . $linha["media"] . '",';
+				$output .= '"NumberRatings":"'. $linha["rating_n"] . '",';
+				$output .= '"SumRatings":"'. $linha["rating_sum"] . '",';
+				$output .= '"MediaRating":"'. $linha["rating_n"]/$linha["rating_sum"] . '"}';
+				$output ='{"records":['.$output.']}';
+			return $output;
+			}
+			else{
+				echo "Cannot find media. Media might have been deleted.";
+			}
+		}
+		else{
+			echo "Could not establish connection.";
+		}
+	}
 	
 	
 	//create playlist
@@ -379,7 +405,6 @@
 	//get event participants
 	//add event participant (if jam only?)
 	//remove event participant
-	//get tickets - nao e necessario?
 
 	//buy tickets
 //fazer isto seguro - INSERIR LOCK
