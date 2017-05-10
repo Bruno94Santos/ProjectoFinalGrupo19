@@ -120,6 +120,30 @@
 		}
 	}
 	
+	function get_artists_by_page($page){
+		$result = $conn->query("SELECT * FROM artists LIMIT $page,3");
+		$output="";
+		if($result){
+			while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
+				if ($output != "") {$output .= ",";}
+				$output .= '{"ArtistUserID":"'  . $linha["id"] . '",';
+				$output .= '"ArtistID":"'  . $linha["artist_id"] . '",';
+				$output .= '"ArtistPicture":"'  . $linha["picture"] . '",';
+				$output .= '"ArtistName":"'  . $linha["name"] . '",';
+				$output .= '"ArtistLocation":"'  . $linha["location"] . '",';
+				$output .= '"ArtistDescription":"'  . $linha["description"] . '",';
+				$output .= '"NumberRatings":"'. $linha["rating_n"] . '",';
+				$output .= '"SumRatings":"'. $linha["rating_sum"] . '",';
+				$output .= '"ArtistRating":"'. $linha["rating_n"]/$linha["rating_sum"] . '"}';
+			}
+			$output ='{"records":['.$output.']}';
+			return $output;
+		}
+		else{
+			echo "Could not establish connection.";
+		}
+	}
+
 	//get artist tags
 	function artist_tags($artist_id){
 		$tags=array();
@@ -232,6 +256,8 @@
 				$output .= '"JamSession":"'  . $linha["is_jam"] . '",';
 				$output .= '"EventLocation":"'  . $linha["location"] . '",';
 				$output .= '"EventDescription":"'  . $linha["description"] . '",';
+				$output .= '"TotalSeats":"'  . $linha["total_seats"] . '",';
+				$output .= '"SeatsTaken":"'  . $linha["seats_taken"] . '",';
 				$output .= '"NumberRatings":"'. $linha["rating_n"] . '",';
 				$output .= '"SumRatings":"'. $linha["rating_sum"] . '",';
 				$output .= '"EventRating":"'. $linha["rating_n"]/$linha["rating_sum"] . '"}';
@@ -242,6 +268,54 @@
 		else{
 			echo "Could not establish connection.";
 		}
+	}
+
+
+	function get_events_by_page($page){
+		$result = $conn->query("SELECT * FROM events LIMIT $page,3");
+		$output="";
+		if($result){
+			while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
+				if ($output != "") {$output .= ",";}
+				$output .= '{"EventID":"'  . $linha["id"] . '",';
+				$output .= '"EventName":"'  . $linha["event_name"] . '",';
+				$output .= '"EventTime":"'  . $linha["event_time"] . '",';
+				$output .= '"SoldOut":"'  . $linha["sold_out"] . '",';
+				$output .= '"JamSession":"'  . $linha["is_jam"] . '",';
+				$output .= '"EventLocation":"'  . $linha["location"] . '",';
+				$output .= '"EventDescription":"'  . $linha["description"] . '",';
+				$output .= '"TotalSeats":"'  . $linha["total_seats"] . '",';
+				$output .= '"SeatsTaken":"'  . $linha["seats_taken"] . '",';
+				$output .= '"NumberRatings":"'. $linha["rating_n"] . '",';
+				$output .= '"SumRatings":"'. $linha["rating_sum"] . '",';
+				$output .= '"EventRating":"'. $linha["rating_n"]/$linha["rating_sum"] . '"}';
+			}
+			$output ='{"records":['.$output.']}';
+			return $output;
+		}
+		else{
+			echo "Could not establish connection.";
+		}
+	}
+
+	//type must be artists, playlists, or events
+	//CHECK IF WORKS
+	function get_number($type){
+		//$result = $conn->query("SELECT Count(*) AS row_number FROM $type;");
+		$query = mysql_query("SELECT Count(*) AS row_number FROM $type;");
+		$result = mysql_result($query, 0, 0);
+		if($result){
+			return $result;
+		}
+		/*if(!$result){
+			echo "Could not connect.";
+		}
+		else{
+			$result->fetch_row()[0];
+			return $result;
+			//return mysql_result($result,0);
+		}*/
+		
 	}
 	
 
@@ -300,16 +374,45 @@
 	//get event participants
 	//add event participant (if jam only?)
 	//remove event participant
-	//get tickets
+	//get tickets - nao e necessario?
+
 	//buy tickets
+//fazer isto seguro - INSERIR LOCK
+	function buy_ticket($id,$event_id){
+		$result = $conn->query("SELECT sold_out, total_seats, seats_taken FROM events WHERE id = $event_id");
+		if($result){
+			$linha=mysqli_fetch_assoc($result);
+			if ($linha[sold_out] == False){
+				if($linha[total_seats] == $linha[seats_taken]+1){
+					$soldout = True;
+				}
+				else{
+					$soldout = False;
+				}
+				$seats = $linha[seats_taken]+1;
+				$result1 = $conn->query("UPDATE events SET sold_out = $soldout, seats_taken = $seats WHERE id = $event_id");
+				if($result1){
+					$result2 = $conn->query("INSERT INTO seats(event_id,buyer) VALUES ($event_id,$id)");
+					if($result2){
+						echo "Ticket bought with success.";
+					}
+				}
+			}
+			else{
+				echo "Tickets already sold out.";
+			}
+		}
+		else{
+			echo "Could not establish connection.";
+		}
+	}
+
+
+
 	
 	
 	//hall of fame 
 	//hall of fame voting
-	//permission to see music
-	//permission to see video
-	//permission to download
-	//permission to comment
 	//blocked users
 	
 	
