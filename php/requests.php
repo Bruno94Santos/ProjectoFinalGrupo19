@@ -228,6 +228,9 @@
 				$output .= '"JamSession":"'  . $linha["is_jam"] . '",';
 				$output .= '"EventLocation":"'  . $linha["location"] . '",';
 				$output .= '"EventDescription":"'  . $linha["description"] . '",';
+				$output .= '"TotalSeats":"'  . $linha["total_seats"] . '",';
+				$output .= '"SeatsTaken":"'  . $linha["seats_taken"] . '",';
+				$output .= '"TicketPrice":"'  . $linha["price"] . '",';
 				$output .= '"NumberRatings":"'. $linha["rating_n"] . '",';
 				$output .= '"SumRatings":"'. $linha["rating_sum"] . '",';
 				$output .= '"EventRating":"'. $linha["rating_n"]/$linha["rating_sum"] . '"}';
@@ -258,6 +261,7 @@
 				$output .= '"EventDescription":"'  . $linha["description"] . '",';
 				$output .= '"TotalSeats":"'  . $linha["total_seats"] . '",';
 				$output .= '"SeatsTaken":"'  . $linha["seats_taken"] . '",';
+				$output .= '"TicketPrice":"'  . $linha["price"] . '",';
 				$output .= '"NumberRatings":"'. $linha["rating_n"] . '",';
 				$output .= '"SumRatings":"'. $linha["rating_sum"] . '",';
 				$output .= '"EventRating":"'. $linha["rating_n"]/$linha["rating_sum"] . '"}';
@@ -286,6 +290,7 @@
 				$output .= '"EventDescription":"'  . $linha["description"] . '",';
 				$output .= '"TotalSeats":"'  . $linha["total_seats"] . '",';
 				$output .= '"SeatsTaken":"'  . $linha["seats_taken"] . '",';
+				$output .= '"TicketPrice":"'  . $linha["price"] . '",';
 				$output .= '"NumberRatings":"'. $linha["rating_n"] . '",';
 				$output .= '"SumRatings":"'. $linha["rating_sum"] . '",';
 				$output .= '"EventRating":"'. $linha["rating_n"]/$linha["rating_sum"] . '"}';
@@ -302,8 +307,8 @@
 	//CHECK IF WORKS
 	function get_number($type){
 		//$result = $conn->query("SELECT Count(*) AS row_number FROM $type;");
-		$query = mysql_query("SELECT Count(*) AS row_number FROM $type;");
-		$result = mysql_result($query, 0, 0);
+		$query = mysqli_query("SELECT Count(*) AS row_number FROM $type;");
+		$result = mysqli_result($query, 0, 0);
 		if($result){
 			return $result;
 		}
