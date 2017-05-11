@@ -8,23 +8,21 @@
     HomeController.$inject = ['$rootScope','$scope','$http'];
     function HomeController($rootScope, $scope, $http) {
         var vm = this;
+		$scope.user.username = "Danilea"
 
-       /* vm.user = null;
+        /*vm.user = null;
         vm.allUsers = [];
-        vm.deleteUser = deleteUser;
+        vm.deleteUser = deleteUser;*/
 
         initController();
 
         function initController() {
-            loadCurrentUser();
-            loadAllUsers();
+            //loadCurrentUser();
+            //loadAllUsers();
         }
 
-        function loadCurrentUser() {
-            UserService.GetByUsername($rootScope.globals.currentUser.username)
-                .then(function (user) {
-                    vm.user = user;
-                });
+       /* function loadCurrentUser() {
+            $http.get()
         }
 
         function loadAllUsers() {
@@ -55,13 +53,13 @@
             document.getElementById("mySidenav").style.width = "250px";
             document.getElementById("main").style.marginLeft = "250px";
             document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-          }
-          $scope.asdf = function() {
+          }*/
+          $scope.logout = function() {
               console.log("AQUi");
-            }
-*/
+          }
+
       /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
-       /* $scope.closeNav = function() {
+        /*$scope.closeNav = function() {
             document.getElementById("mySidenav").style.width = "0";
             document.getElementById("main").marginLeft = "0";
             document.body.style.backgroundColor = "white";
