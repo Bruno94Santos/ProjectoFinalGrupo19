@@ -1,0 +1,27 @@
+<!DOCTYPE html>  
+ <html>  
+      <head>  
+           <title>MusIn</title>  
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+           <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> 
+	   <script src="../Controller/login.js"></script>   
+      </head>  
+      <body ng-app="myapp" >  
+           <br /><br />  
+           <div class="container">  
+                <h3 align="center">Login</h3>  
+                <div ng-app="myapp" ng-controller="login">
+		<form ng-submit="inserData()">  
+                     <label>Username</label>  
+                     <input type="text" name="username" ng-model="username" class="form-control" />  
+                     <br />
+		     <label>Password</label>  
+                     <input type="password" name="password" ng-model="password" class="form-control" />  
+                     <br />
+                     <input type="submit" name="btnInsert" class="btn btn-info" value="Login"/>  
+                </form>
+		</div>
+           </div>  
+      </body>  
+ </html>  
+ 
