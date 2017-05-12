@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>dashboard</title>
+</head>
+<body ng-app="myapp">
+<div class="caption" ng-repeat="x in concerts" ng-controller="dashboard">
+    <h3> {{x.EventName}} </h3>
+    <p> {{x.EventDescription}} </p>
+    <p> {{x.TicketPrice}} </p>
+    <p><a href="buyTicket.html" class="btn btn-primary" role="button">Buy</a></p>
+</div>
+<button ng-click="showMore()">
+    Show More
+</button>
+<div class="caption" ng-repeat="x in music" ng-controller="dashboard">
+    <h3>{{x.IsSong}}</h3>
+    <p>{{x.Description}}</p>
+    <button ng-click="">Play</button>
+    <button ng-click="">Download</button>
+</div>
+<button ng-click="showMusic()">
+    Show More
+</button>
+
+
+</body>
+</html>
