@@ -10,14 +10,14 @@
                 <div class="well well-sm">
                     <div class="row">
                         <div class="col-sm-6 col-md-4">
-                            <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                            <img ng-src="http://{{profile.ArtistPicture}}" alt="" class="img-rounded img-responsive" />
                         </div>
                         <div class="col-sm-6 col-md-8">
                             <h4>
-                                {{ArtistName}}</h4>
-                            <small><cite title="San Francisco, USA"> {{ArtistLocation}} <i class="glyphicon glyphicon-map-marker">
+                                {{profile.ArtistName}}</h4>
+                            <small><cite title="San Francisco, USA"> {{profile.ArtistLocation}} <i class="glyphicon glyphicon-map-marker">
                             </i></cite></small>
-                            <p>{{ArtistDescription}}</p>
+                            <p>{{profile.ArtistDescription}}</p>
                         </div>
                     </div>
                 </div>
