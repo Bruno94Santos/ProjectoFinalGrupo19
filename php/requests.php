@@ -59,6 +59,7 @@
 		$user_id=$_SESSION["id"];
 		$result = $conn->query("INSERT INTO artists(id,description,picture,location,name,rating_sum,rating_n) VALUES ($user_id,'$description','$picture','$location','$name',0,0)");
 		$res = $conn->query("UPDATE users SET is_artist=TRUE WHERE id = $user_id");
+		$_SESSION["is_artist"]=1;
 		if(!$result || !$res){
 			die("Error when creating artist.");
 		}
@@ -215,6 +216,7 @@
 
 	
 	//get single event
+	//ON CLIENT SIDE IF PRICE IS NULL OR ZERO READ AS 'FREE'
 	function get_event($event_id){
 		$result = $conn->query("SELECT * FROM events WHERE id = $event_id");
 		if($result){
@@ -237,7 +239,7 @@
 				return $output;
 			}
 			else{
-				echo "There was an error fetching this artist. This page might have been deleted.";
+				echo "There was an error fetching this event. The page might have been deleted.";
 			}
 		}
 		else{
