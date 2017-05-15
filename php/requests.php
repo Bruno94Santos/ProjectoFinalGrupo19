@@ -121,6 +121,22 @@
 		}
 	}
 	
+	function get_artists_by_user($user_id){
+		$result = $conn->query("SELECT artist_id FROM artists WHERE id = $user_id");
+		if($result){
+			$output="";
+			while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
+				if ($output != "") {$output .= ",";}
+				$output .= get_artist($linha["artist_id"]);
+			}
+			$output ='{"records":['.$output.']}';
+			return $output;
+		}
+		else{
+			echo "Could not establish connection.";
+		}
+	}
+	
 	function get_artists_by_page($page){
 		$result = $conn->query("SELECT * FROM artists LIMIT $page,3");
 		$output="";
@@ -224,6 +240,7 @@
 				$linha=mysqli_fetch_assoc($result);
 				$output="";
 				$output .= '{"EventID":"'  . $linha["id"] . '",';
+				$output .= '"EventCreator":"'  . $linha["creator_id"] . '",';
 				$output .= '"EventName":"'  . $linha["event_name"] . '",';
 				$output .= '"EventTime":"'  . $linha["event_time"] . '",';
 				$output .= '"SoldOut":"'  . $linha["sold_out"] . '",';
@@ -255,6 +272,7 @@
 			while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
 				if ($output != "") {$output .= ",";}
 				$output .= '{"EventID":"'  . $linha["id"] . '",';
+				$output .= '"EventCreator":"'  . $linha["creator_id"] . '",';
 				$output .= '"EventName":"'  . $linha["event_name"] . '",';
 				$output .= '"EventTime":"'  . $linha["event_time"] . '",';
 				$output .= '"SoldOut":"'  . $linha["sold_out"] . '",';
@@ -284,6 +302,7 @@
 			while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
 				if ($output != "") {$output .= ",";}
 				$output .= '{"EventID":"'  . $linha["id"] . '",';
+				$output .= '"EventCreator":"'  . $linha["creator_id"] . '",';
 				$output .= '"EventName":"'  . $linha["event_name"] . '",';
 				$output .= '"EventTime":"'  . $linha["event_time"] . '",';
 				$output .= '"SoldOut":"'  . $linha["sold_out"] . '",';
@@ -378,12 +397,9 @@
 				$output .= '"NumberRatings":"'. $linha["rating_n"] . '",';
 				$output .= '"SumRatings":"'. $linha["rating_sum"] . '",';
 				$output .= '"MediaRating":"'. $linha["rating_n"]/$linha["rating_sum"] . '"}';
-				$output ='{"records":['.$output.']}';
+			}
+			$output ='{"records":['.$output.']}';
 			return $output;
-			}
-			else{
-				echo "Cannot find media. Media might have been deleted.";
-			}
 		}
 		else{
 			echo "Could not establish connection.";
@@ -391,25 +407,158 @@
 	}
 	
 	
-	//create playlist
-	//get playlist
-	//get all playlists
-	//get x by tag
-	//get favourites
-	//see followers
-	//see following
-	//get inbox
-	//send message
-	//post comment
-	//post rating
+	//TODO create playlist
+	//TODO get playlist
+	//TODO get all playlists
+	//TODO get x by tag
+	
+	//search by artist name
+	function search_artist($string){
+		$result = $conn->query("SELECT * FROM artists WHERE name LIKE '%$string%'");
+		$output="";
+		if($result){
+			while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
+				if ($output != "") {$output .= ",";}
+				$output .= '{"ArtistUserID":"'  . $linha["id"] . '",';
+				$output .= '"ArtistID":"'  . $linha["artist_id"] . '",';
+				$output .= '"ArtistPicture":"'  . $linha["picture"] . '",';
+				$output .= '"ArtistName":"'  . $linha["name"] . '",';
+				$output .= '"ArtistLocation":"'  . $linha["location"] . '",';
+				$output .= '"ArtistDescription":"'  . $linha["description"] . '",';
+				$output .= '"NumberRatings":"'. $linha["rating_n"] . '",';
+				$output .= '"SumRatings":"'. $linha["rating_sum"] . '",';
+				$output .= '"ArtistRating":"'. $linha["rating_n"]/$linha["rating_sum"] . '"}';
+			}
+			$output ='{"records":['.$output.']}';
+			return $output;
+		}
+		else{
+			echo "Could not establish connection.";
+		}
+	}
+	
+	//search by event name
+	function search_event($string){
+		$result = $conn->query("SELECT * FROM events WHERE event_name LIKE '%$string%'");
+		$output="";
+		if($result){
+			while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
+				if ($output != "") {$output .= ",";}
+				$output .= '{"EventID":"'  . $linha["id"] . '",';
+				$output .= '"EventCreator":"'  . $linha["creator_id"] . '",';
+				$output .= '"EventName":"'  . $linha["event_name"] . '",';
+				$output .= '"EventTime":"'  . $linha["event_time"] . '",';
+				$output .= '"SoldOut":"'  . $linha["sold_out"] . '",';
+				$output .= '"JamSession":"'  . $linha["is_jam"] . '",';
+				$output .= '"EventLocation":"'  . $linha["location"] . '",';
+				$output .= '"EventDescription":"'  . $linha["description"] . '",';
+				$output .= '"TotalSeats":"'  . $linha["total_seats"] . '",';
+				$output .= '"SeatsTaken":"'  . $linha["seats_taken"] . '",';
+				$output .= '"TicketPrice":"'  . $linha["price"] . '",';
+				$output .= '"NumberRatings":"'. $linha["rating_n"] . '",';
+				$output .= '"SumRatings":"'. $linha["rating_sum"] . '",';
+				$output .= '"EventRating":"'. $linha["rating_n"]/$linha["rating_sum"] . '"}';
+			}
+			$output ='{"records":['.$output.']}';
+			return $output;
+		}
+		else{
+			echo "Could not establish connection.";
+		}
+	}
+	
 
 	
+	//check if event is over
+	function event_over($event_id){
+		$result = $conn->query("SELECT *, DATE(event_time)<DATE(NOW()) as event_over FROM events WHERE id = $event_id");
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		if ($row['event_over'] == 1) {
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	
 	//get event participants
-	//add event participant (if jam only?)
+	function get_participants($event_id){
+		$result = $conn->query("SELECT artist_id FROM eparticipants WHERE event_id = $event_id");
+		if($result){
+			$output="";
+			while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
+				if ($output != "") {$output .= ",";}
+				$output .= get_artist($linha["artist_id"]);
+			}
+			$output ='{"records":['.$output.']}';
+			return $output;
+		}
+		else{
+			echo "Could not establish connection.";
+		}
+	}
+	
+	
+	//add event participant 
+	//ON CLIENT SIDE MAYBE SEND CONFIRMATION MESSAGE TO ARTIST?
+	//SE QUISEREM ESTA FUNÇAO POR NOME DE ARTISTA PEÇAM SFF
+	function add_event_participant($event_id, $artist_id){
+		$event = json_decode(get_event($event_id));
+		if (($event->EventCreator)==$_SESSION["id"]){
+			$result = $conn->query("INSERT INTO eparticipants(event_id,artist_id) VALUES ($event_id, $artist_id)");
+			if(!$result){
+				echo "Was not able to add artist. They might already be a participant.";
+			}
+		}
+		else{
+			echo "You don't have permission to access this page.";
+		}
+	}
+	
+	
 	//remove event participant
+	function remove_event_participant($event_id, $artist_id){
+		$event = json_decode(get_event($event_id));
+		if (($event->EventCreator)==$_SESSION["id"]){
+			$result = $conn->query("DELETE FROM eparticipants WHERE event_id = $event_id AND artist_id=$artist_id");
+			if($result){
+				echo "Artist successfully removed.";
+			}
+		}
+		else{
+			echo "You don't have permission to access this page.";
+		}
+	}
+	
+	
+	//A DIFERENÇA ENTRE EVENTOS E JAMS E QUE NOS JAMS E O PROPRIO UTLILIZADOR A INSCREVER-SE
+	//ADICIONAR OUTPUT??? IDK IF RESULT CHECK WORKS WITH INSERT
+	
+	
+	//add self to jam
+	//NO CLIENT SIDE PEDIR PARA ESPECIFICAR QUAL DOS ARTISTAS QUE O UTILIZADOR REPRESENTA E QUE SE VAI ADICIONAR
+	function add_jam_participant($event_id, $artist_id){
+		$result = $conn->query("INSERT INTO eparticipants(event_id,artist_id) VALUES ($event_id, $artist_id)");
+		if(!$result){
+			echo "Was not able to add you to this jam session. You might already be signed up as a participant.";
+		}
+	}
+	
+	
+	//remove self from jam	
+	//NO CLIENT SIDE PEDIR PARA ESPECIFICAR QUAL DOS ARTISTAS QUE O UTILIZADOR REPRESENTA E QUE SE VAI REMOVER
+	function remove_jam_participant($event_id, $artist_id){
+		$result = $conn->query("DELETE FROM eparticipants WHERE event_id = $event_id AND artist_id=$artist_id");
+		if($result){
+			echo "You sucessfully left this jam session.";
+		}
+	}
+	
+	
 
 	//buy tickets
-//fazer isto seguro - INSERIR LOCK
+//TODO fazer isto seguro - INSERIR LOCK
 	function buy_ticket($id,$event_id){
 		$result = $conn->query("SELECT sold_out, total_seats, seats_taken FROM events WHERE id = $event_id");
 		if($result){
@@ -441,6 +590,80 @@
 
 
 
+	
+	//TODO list favourites
+	//TODO count # likes
+	
+	//add favourite artist
+	function follow_artist($user_id,$artist_id){
+		$result = $conn->query("INSERT INTO afollowers(artist,follower) VALUES ($artist_id, $user_id)");
+		if(!$result){
+			echo "Was not able to like this artist. Try again later.";
+		}
+	}
+	//remove favourite artist
+	function unfollow_artist($user_id, $artist_id){
+		$result = $conn->query("DELETE FROM afollowers WHERE follower = $user_id AND artist=$artist_id");
+		if($result){
+			echo "You sucessfully unliked this artist.";
+		}
+	}
+	
+	
+	//add favourite event
+	function follow_event($user_id,$event_id){
+		$result = $conn->query("INSERT INTO efollowers(event,follower) VALUES ($event_id, $user_id)");
+		if(!$result){
+			echo "Was not able to like this event. Try again later.";
+		}
+	}
+	//remove favourite event
+	function unfollow_event($user_id, $event_id){
+		$result = $conn->query("DELETE FROM efollowers WHERE follower = $user_id AND event=$event_id");
+		if($result){
+			echo "You sucessfully unliked this event.";
+		}
+	}
+	
+	
+	//add favourite media
+	function fav_media($user_id,$media_id){
+		$result = $conn->query("INSERT INTO mfavourites(media,follower) VALUES ($media_id, $user_id)");
+		if(!$result){
+			echo "Was not able to like this media. Try again later.";
+		}
+	}
+	//remove favourite media
+	function unfav_media($user_id, $media_id){
+		$result = $conn->query("DELETE FROM mfavourites WHERE follower = $user_id AND media=$media_id");
+		if($result){
+			echo "You sucessfully unliked this event.";
+		}
+	}
+	
+	
+	//add favourite playlist
+	function fav_playlist($user_id,$playlist_id){
+		$result = $conn->query("INSERT INTO pfavourites(playlist,follower) VALUES ($playlist_id, $user_id)");
+		if(!$result){
+			echo "Was not able to like playlist. Try again later.";
+		}
+	}
+	//remove favourite playlist
+	function unfav_playlist($user_id, $media_id){
+		$result = $conn->query("DELETE FROM mfavourites WHERE follower = $user_id AND playlist=$playlist_id");
+		if($result){
+			echo "You sucessfully unliked this event.";
+		}
+	}
+	//in restrospective i should have stuck to 'likes' lmao
+	
+	
+	
+	//get inbox
+	//send message
+	//post comment
+	//post rating
 	
 	
 	//hall of fame 
