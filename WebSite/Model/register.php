@@ -21,4 +21,6 @@
            echo 'Error';  
 	}  
  }  
+$connection->close();
+
  ?>  
