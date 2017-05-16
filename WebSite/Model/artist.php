@@ -12,7 +12,7 @@
  $connection = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);
 
  function get_artist($artist_id){
-		$result = $conn->query("SELECT * FROM artists WHERE artist_id = $artist_id");
+		$result =  $connection->query("SELECT * FROM artists WHERE artist_id = $artist_id");
 		if($result){
 			if (mysqli_num_rows($result)>0){
 				$linha=mysqli_fetch_assoc($result);
@@ -39,7 +39,7 @@
 
 
 	function get_media_by_artist($id){
-    		$result = $conn->query("SELECT * FROM media WHERE artist = $id");
+    		$result =  $connection ->query("SELECT * FROM media WHERE artist = $id");
     		if($result){
     			while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
     				if ($output != "") {$output .= ",";}
@@ -63,3 +63,4 @@
     			echo "Could not establish connection.";
     		}
     	}
+?>
