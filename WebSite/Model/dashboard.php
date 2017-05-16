@@ -9,7 +9,7 @@
 
  header("Content-Type: application/json; charset=UTF-8");
 
- $connection = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);
+ $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);
 
  	function get_media($id){
     		$result = $conn->query("SELECT * FROM media WHERE id = $id");
@@ -35,3 +35,5 @@
     			echo "Could not establish connection.";
     		}
     	}
+$conn->close();
+?>

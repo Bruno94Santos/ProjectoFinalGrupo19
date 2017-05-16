@@ -13,7 +13,7 @@
  
  $database = mysqli_select_db($connection, DB_DATABASE);
 	if($_SESSION["loggedin"]==0){
-		$result = $conn->query("SELECT * FROM users WHERE username='$username' OR email='$username' AND PASSWORD='$password'");
+		$result = $connection->query("SELECT * FROM users WHERE username='$username' OR email='$username' AND PASSWORD='$password'");
 
 		if($result){
 			if (mysqli_num_rows($result)>0){

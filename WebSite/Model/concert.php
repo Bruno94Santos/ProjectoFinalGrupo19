@@ -9,7 +9,7 @@
 
  header("Content-Type: application/json; charset=UTF-8");
 
- $connection = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);
+ $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);
 
  function get_events_by_page($page){
  		$result = $conn->query("SELECT * FROM events LIMIT $page,3");
@@ -18,6 +18,7 @@
  			while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
  				if ($output != "") {$output .= ",";}
  				$output .= '{"EventID":"'  . $linha["id"] . '",';
+				$output .= '"EventCreator":"'  . $linha["creator_id"] . '",';
  				$output .= '"EventName":"'  . $linha["event_name"] . '",';
  				$output .= '"EventTime":"'  . $linha["event_time"] . '",';
  				$output .= '"SoldOut":"'  . $linha["sold_out"] . '",';
@@ -38,3 +39,4 @@
  			echo "Could not establish connection.";
  		}
  	}
+?>
