@@ -39,3 +39,4 @@
  			echo "Could not establish connection.";
  		}
  	}
+?>
