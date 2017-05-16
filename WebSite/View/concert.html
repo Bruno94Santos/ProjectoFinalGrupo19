@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myapp">
 <head>
     <title>Concerts</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="../Controller/artist.js"></script>
 </head>
 <body ng-app="myapp">
 <div class="caption" ng-repeat="x in concerts" ng-controller="concert">
