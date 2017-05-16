@@ -35,4 +35,5 @@
     			echo "Could not establish connection.";
     		}
     	}
+$conn->close();
 ?>
