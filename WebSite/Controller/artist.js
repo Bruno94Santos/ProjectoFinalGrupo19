@@ -12,7 +12,7 @@ app.controller("artist", function($scope, $http){
 
 
     $scope.pageMusic = 1;
-    $http.get('../Model/artist.php', {'page': $scope.pageMusic})
+    $http.get('../Model/artist.php/get_artist', {'page': $scope.pageMusic})
         .success(function(result){
             $scope.music = result;
         })
@@ -20,7 +20,7 @@ app.controller("artist", function($scope, $http){
         });
     $scope.showMusic = function ( ) {
         $scope.pageMusic += 1;
-        $http.get('../Model/artist.php', {'page': $scope.pageMusic})
+        $http.get('../Model/artist.php/get_media_by_artist', {'page': $scope.pageMusic})
             .success(function(result){
                 $scope.music = result;
             })
