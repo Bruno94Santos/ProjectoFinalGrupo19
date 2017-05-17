@@ -2,20 +2,27 @@
 
 var app = angular.module("myapp",['ngRoute']);
 
-app.config(function($routeProvider){
+app.config(function($routeProvider, $locationProvider){
 	$routeProvider
-		.when('/View',{
+		.when('/',{
 			templateUrl: 'View/home.html',
-			controller: 'HomeController'			
+			controller: 'home'
 		})
-		.when('/View', {
+		.when('/login', {
 			templateUrl: 'View/login.html',
-			controller: 'HomeController'
+			controller: 'login'
 		})
-		.when('/View', {
+		.when('/register', {
 			templateUrl: 'View/register.html',
 			controller: 'register'
+		})
+		.when('/concert', {
+			templateUrl: 'View/concert.html',
+			controller: 'concert'
+		})
+		.when('/dashboard', {
+			templateUrl: 'View/dashboard.html',
+			controller: 'dashboard'
 		});
-
-
+	$locationProvider.html5Mode(true);
 });
