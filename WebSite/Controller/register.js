@@ -11,7 +11,7 @@ app.controller("register",['$scope', '$http'], function($scope, $http){
 					alert("sucesso");
 					//$scope.username = username;
 					//$scope.password = password;
-					$location.url("/dashboard");
+					$location.url("../View/dashboard");
 				});
 		}
 		//$scope.username = null;  
