@@ -7,11 +7,11 @@ app.controller("register",['$scope', '$http'], function($scope, $http){
 		).success(function(data){  
 			alert(data); 
 			$http.get("../Model/Login.php")
-				.sucess(function(sess){
-					alert(sess);       
+				.sucess(function(data){
+					alert("sucesso");
 					//$scope.username = username;
 					//$scope.password = password;
-					$location.url("http://ec2-35-176-3-50.eu-west-2.compute.amazonaws.com/View/dashboard.html");
+					$location.url("/dashboard");
 				});
 		}
 		//$scope.username = null;  
