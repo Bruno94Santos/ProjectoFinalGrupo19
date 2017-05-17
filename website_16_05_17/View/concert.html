@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Concerts</title>
+</head>
+<body ng-app="myapp">
+<div class="caption" ng-repeat="x in concerts" ng-controller="concert">
+    <h3> {{x.EventName}} </h3>
+    <p> {{x.EventDescription}} </p>
+    <p> {{x.TicketPrice}} </p>
+    <p><a href="buyTicket.html" class="btn btn-primary" role="button">Buy</a></p>
+</div>
+
+<button ng-click="showMore()">
+Show More
+</button>
+</body>
+</html>

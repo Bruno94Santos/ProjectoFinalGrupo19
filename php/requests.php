@@ -51,6 +51,19 @@
 	else{
 		echo "Cannot register while logged in.";
 	}
+	
+	//check if works, might need session data as function parameters
+	function get_session_data(){
+		$output="";
+		$output .= '{"Username":"'  . $_SESSION["username"] . '",';
+		$output .= '"UserID":"'  . $_SESSION["id"] . '",';
+		$output .= '"UserPicture":"'  . $_SESSION["picture"] . '",';
+		$output .= '"Email":"'  . $_SESSION["email"] . '",';
+		$output .= '"IsArtist":"'  . $_SESSION["is_artist"]] . '",';
+		$output .= '"LoggedIn":"'  . 1 . '",';
+		$output .= '"Admin":"'. 0 . '"}';
+		return $output;
+	}
 
 	
 	//create artist

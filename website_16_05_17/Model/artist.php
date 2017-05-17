@@ -1,8 +1,7 @@
 <?php
- include "../../inc/dbinfo.inc";
+session_start(); //on index top
+include "../../dbinfo.inc";
 
-
- session_start(); //on index top
  if(!isset($_SESSION["loggedin"])){
 	$_SESSION["loggedin"]=0;
  }
@@ -42,8 +41,8 @@
     		$result =  $connection ->query("SELECT * FROM media WHERE artist = $id");
     		if($result){
     			while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
-    				if ($output != "") {$output .= ",";}
-    				$output="";
+                    $output="";
+                    if ($output != "") {$output .= ",";}
     				$output .= '{"MediaID":"'  . $linha["id"] . '",';
     				$output .= '"ArtistID":"'  . $linha["artist"] . '",';
     				$output .= '"IsSong":"'  . $linha["song"] . '",';
@@ -56,11 +55,11 @@
     			return $output;
     			}
     			else{
-    				echo "Cannot find media. Media might have been deleted.";
+    				return "Cannot find media. Media might have been deleted.";
     			}
     		}
     		else{
-    			echo "Could not establish connection.";
+    			return "Could not establish connection.";
     		}
     	}
 ?>

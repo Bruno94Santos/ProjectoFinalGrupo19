@@ -10,7 +10,6 @@
 			while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
 				if ($output != "") {$output .= ",";}
 				$output .= '{"EventID":"'  . $linha["id"] . '",';
-				$output .= '"EventCreator":"'  . $linha["creator_id"] . '",';
 				$output .= '"EventName":"'  . $linha["event_name"] . '",';
 				$output .= '"EventTime":"'  . $linha["event_time"] . '",';
 				$output .= '"SoldOut":"'  . $linha["sold_out"] . '",';
