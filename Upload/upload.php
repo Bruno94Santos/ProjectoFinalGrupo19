@@ -15,8 +15,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
  
 $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
  
-function media_upload($is_song,$media,$artist_id){
-	$description = "";
+function media_upload($is_song,$media,$artist_id,$description){
 	$result = $conn->query("INSERT INTO media(artist,song,description,media,rating_sum,rating_n) VALUES ($artist_id,TRUE,'$description','$media',0,0)");
 	if(!$result){
 		die("Error when uploading.");
@@ -51,7 +50,7 @@ if(isset($_POST['Submit'])){
 	}
 }
 
-//ALTERAR FORM PARA RECEBER QUAL ARTISTA E QUE ESTA A FAZER UPLOAD
+//ALTERAR FORM PARA RECEBER QUAL ARTISTA E QUE ESTA A FAZER UPLOAD (E QUAL O NOME A SER ATRIBUIDO?)
 ?>
 
 <form action="" method="post" enctype="multipart/form-data">
