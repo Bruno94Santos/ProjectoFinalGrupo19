@@ -5,6 +5,26 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="../Controller/insertContent.js"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/sidenav.css">
+    <div class="page-header">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="myartists.html">My Artists</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="halloffame.html">Hall of Fame</a>
+            <a href="jamsessions.html">Jam Sessions</a>
+            <a href="concerts.html">Concerts</a>
+            <a href="playlists.html">Playlists</a>
+            <a href="search.html">Search</a>
+
+
+        </div>
+        <span onclick="openNav()"><a href="#" class = "btn btn-default btn-lg" role="button">Menu</a></span>
+        <div class="leftbuttons">
+            <a href="../View/login.html" class="btn btn-primary" role="button">LogIn</a>
+            <a href="../View/register.html" class="btn btn-primary" role="button">Register</a>
+        </div>
+    </div>
 </head>
 <body ng-app="myapp">
 <div class="formYes" ng-controller="insertContent">

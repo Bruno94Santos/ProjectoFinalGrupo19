@@ -87,10 +87,10 @@
 
 
         <div id="myRadioGroup">
-            Free<input type="radio" name="free.payed" checked="checked" value="FALSE" ng-model="free.payed"  />
-            Payed<input type="radio" name="free.payed" value="TRUE" ng-model="free.payed" />
-
-            <div id="Pay3" class="desc" ng-show="free.payed == TRUE">
+            Free<input type="radio" name="free.payed" checked="checked" value="TRUE" ng-model="free.payed"  />
+            Payed<input type="radio" name="free.payed" value="FALSE" ng-model="free.payed" />
+            <p>{{free.payed}}</p>
+            <div id="Pay3" class="desc" ng-show="free.payed == FALSE">
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Ticket number</label>
                     <div class="col-10">

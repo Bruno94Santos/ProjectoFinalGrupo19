@@ -13,7 +13,7 @@ app.controller("register",['$scope', '$http'], function($scope, $http){
 					//$scope.password = password;
 					$location.url("../View/dashboard");
 				});
-		}
+
 		//$scope.username = null;  
 		//$scope.email = null;
 		//$scope.password = null;  
