@@ -1,23 +1,23 @@
 var app = angular.module("myapp",[]);  
-app.controller("register",['$scope', '$http'], function($scope, $http){  
-	$scope.insertData = function(){  
-		$http.post(  
-			"../Model/register.php",  
-			{'username':$scope.username, 'email':$scope.email, 'password':$scope.password}  
-		).success(function(data){  
-			alert(data); 
-			$http.get("../Model/Login.php")
-				.sucess(function(data){
-					alert("sucesso");
-					//$scope.username = username;
-					//$scope.password = password;
-					$location.url("../View/dashboard");
-				});
-		});
-		//$scope.username = null;  
-		//$scope.email = null;
-		//$scope.password = null;  
-	};
-});
-
-
+ app.controller("register", function($scope, $http, $window, $location){
+      $scope.insertData = function(){
+           $http.post(
+                "../Model/register.php",
+                {'username':$scope.username, 'email':$scope.email, 'password':$scope.password}
+           ).success(function(data){
+                alert(data);
+                $http.post("../Model/login.php",{'username':$scope.username, 'password':$scope.password})
+		.success(function(data){
+			alert(data);
+                    	$http.get("../Model/dashboard.php", {'username':$scope.username, 'email':$scope.email})
+                	.success(function(data){
+                    		//alert("sucesso");
+                    		//$scope.username = data;
+                    		//$scope.email = data;
+                    		//$location.url($scope.username);
+                    		$window.location.href = '../View/dashboard.html';
+                	});
+		})
+           });
+      }
+ });

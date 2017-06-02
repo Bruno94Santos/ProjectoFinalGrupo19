@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="musInApp">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- If IE use the latest rendering engine -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Set the page to the width of the device and set the zoon level -->
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css" media="screen" />
+    <script src="angular.min.js"></script>
+    <script src="java.js"></script>
+    <title>Musin Artist</title>
+    <style>
+        .jumbotron{
+            background-color: #00AA88;
+            color:white;
+        }
+    </style>
+
+    <div class="page-header">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="myartists.html">My Artists</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="halloffame.html">Hall of Fame</a>
+            <a href="jamsessions.html">Jam Sessions</a>
+            <a href="concerts.html">Concerts</a>
+            <a href="playlists.html">Playlists</a>
+            <a href="search.html">Search</a>
+
+
+        </div>
+        <span onclick="openNav()"><a href="#" class = "btn btn-default btn-lg" role="button">Menu</a></span>
+        <div class="logo"><a href="index.html"><h1>MusIn</h1></a></div>
+        <a href="profile.html"><img src="icon.png" alt="profile" style="width:3%;"></a>
+        <a href="message.html"><img src="message.png" alt="message" style="width:4%;"> </a>
+    </div>
+</head>
+<body>
+<div class="container" ng-controller="profile">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            {{name}}</h4>
+                        <small><cite title="San Francisco, USA"> {{place}} <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>{{mail}}
+                            <br />
+                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">{{web}}</a>
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>{{birthday}}</p>
+                        <!-- Split button -->
+                        <!--<div class="btn-group">
+                            <button type="button" class="btn btn-primary">
+                                Social</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span><span class="sr-only">Social</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
+                                <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Github</a></li>
+                            </ul>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p><a href="insertMusic.html" class="btn btn-primary" id="botao" role="button">Insert Content</a></p>
+
+<div class="thumbnail">
+    <div class="caption" ng-controller="music">
+        <img src="play.png" alt="..." style="width:3%">
+        <h3>{{music}}</h3>
+        <p>{{description}}</p>
+        <p><a href="#" class="btn btn-primary" role="button">Play</a></p>
+    </div>
+    <p></p>
+</div>
+<div class="thumbnail">
+    <div class="caption" ng-controller="music">
+        <img src="play.png" alt="..." style="width:3%">
+        <h3>{{music}}</h3>
+        <p>{{description}}</p>
+        <p><a href="#" class="btn btn-primary" role="button">Play</a></p>
+    </div>
+</div>
+<div class="thumbnail">
+    <div class="caption" ng-controller="music">
+        <img src="play.png" alt="..." style="width:3%;">
+        <h3> {{music}}</h3>
+        <p> {{description}}</p>
+        <p><a href="#" class="btn btn-primary" role="button">Play</a></p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>  
+ <html>  
+      <head>  
+           <title>MusIn</title>  
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+           <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> 
+	   <script src="../Controller/home.js"></script>   
+      </head>  
+      <body ng-app="myapp" >  
+           <br /><br />  
+           <div class="container">  
+                <div ng-controller="home"> 
+			<p>{{dados}}</p>
+			EventID: <p>{{dados['records'][0]['EventID']}}</p>
+			EventName: <p>{{dados['records'][0]['EventName']}}</p>
+			JamSession: <p>{{dados['records'][0]['JamSession']}}</p>
+	        </div>
+           </div>  
+      </body>  
+ </html>  
+ 

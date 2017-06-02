@@ -1,0 +1,43 @@
+<div style="background-color:#FFFF;"class="page-header">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
+        <a href="myartists.html">My Artists</a>
+        <a href="favourites.html">Favourites</a>
+        <a href="halloffame.html">Hall of Fame</a>
+        <a href="jamsessions.html">Jam Sessions</a>
+        <a href="concerts.html">Concerts</a>
+        <a href="playlists.html">Playlists</a>
+        <a href="search.html">Search</a>
+
+    </div>
+    <span style="font-size:30px;cursor:pointer" ng-click="openNav()">&#9776; open</span>
+
+    <!--<a href="profile.html"><img id="foto" src="icon.png" alt="profile" style="width:3%;"></a>
+    <a href="message.html"><img src="message.png" alt="message" style="width:4%;"> </a>-->
+</div>
+</div>
+<h1>Welcome to MusIn <!--{{vm.user.firstName}}-->!</h1>
+<p>You're logged in!!</p>
+<h3>All registered users:</h3>
+<ul>
+    <li ng-repeat="user in vm.allUsers">
+        {{user.username}} ({{user.email}})
+        - <a ng-click="vm.deleteUser(user.id)">Delete</a>
+    </li>
+</ul>
+<!--
+<div>
+  <form>
+    <input type ="file" file-input="files" onchange="angular.elemnent(this).scope().filesChanged(this)" multiple />
+    <button ng-click="upload()">Upload</button>
+    <li ng-repeat="file in files">
+      {{file.name}}
+    </li>
+  </form>
+</div>
+-->
+<p>&nbsp;</p>
+<p><a href="#!/login" class="btn btn-primary">Logout</a></p>
+<p><a href="#!/createArtist" class="btn btn-primary">Create Page of Artist</a></p>
+<!-- por fazer -->
+<!--<p><a href="#!/pageArtist" class="btn btn-primary">View Page of Artist</a></p> -->

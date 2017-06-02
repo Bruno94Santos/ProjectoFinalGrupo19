@@ -1,5 +1,5 @@
 var app = angular.module("myapp",[]);  
- app.controller("login", function($scope, $http){
+ app.controller("login",['$scope', function($scope, $http, $window){
 	 $scope.insertData = function(){ 
 		$http.get("../Model/Login.php")
 		.sucess(function(username, password){

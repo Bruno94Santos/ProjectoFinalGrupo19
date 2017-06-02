@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title>Concerts</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="../Controller/concert.js"></script>
+</head>
+<body ng-controller="concert">
+<p>{{concerts}}</p>
+<!--<div class="caption" ng-repeat="x in concerts">
+    <h3> {{x.EventName}} </h3>
+    <p> {{x.EventDescription}} </p>
+    <p> {{x.TicketPrice}} </p>
+    <p><a href="buyTicket.html" class="btn btn-primary" role="button">Buy</a></p>
+</div>!-->
+
+<button ng-click="showMore()">
+Show More
+</button>
+</body>
+</html>

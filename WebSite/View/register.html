@@ -1,51 +1,33 @@
 <!DOCTYPE html>  
- <html>  
+ <html ng-app="myapp">
       <head>  
-          <title>MusIn</title>
-		  <meta name="viewport" content="width=device-width, initial-scale=1">
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-          <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-		  <script src="../Controller/register.js"></script>
-		  <link rel="stylesheet" href="../CSS/register.css" >
-		  <link rel="stylesheet" type="text/css" href="../CSS/sidenav.css">
-		  <div class="page-header">
-			  <div id="mySidenav" class="sidenav">
-				  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-				  <a href="dashboard.html">MuseIn</a>
-				  <a href="login.html">LogIn</a>
-				  <a href="register.html">Register</a>
-				  <a href="myartists.html">My Artists</a>
-				  <a href="favourites.html">Favourites</a>
-				  <a href="concerts.html">Concerts</a>
-				  <a href="playlists.html">Playlists</a>
-				  <a href="search.html">Search</a>
-
-
-			  </div>
-			  <span onclick="openNav()"><a href="#" class = "btn btn-default btn-lg" role="button">Menu</a></span>
-		  </div>
+           <title>MusIn</title>
+	   <meta name="viewport" content="width=device-width, initial-scale=1">
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+           <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	   <script src="../Controller/register.js"></script>
+	   <link rel="stylesheet" href="../CSS/register.css" \>
       </head>  
-      <body ng-app="myapp" >  
+      <body >
            <br /><br />  
            <div class="container">  
                 <div class="row">
-					<div class="col-xs-12 col-sm-6">
-						<h3 align="center">Register</h3>
-								<div ng-app="myapp" ng-controller="register">
-										<label>Username</label>
-										<input type="text" name="username" ng-model="username" class="form-control" />
-										<br />
-								<label>email</label>
-										<input type="text" name="email" ng-model="email" class="form-control" required/>
-										<br />
-								<label>Password</label>
-										<input type="password" name="password" ng-model="password" class="form-control" />
-										<br />
-										<input type="submit" name="btnInsert" class="btn btn-info" ng-click="insertData()" value="Register"/>
-								</div>
-					</div>
+		<div class="col-xs-12 col-sm-6">
+			<h3 align="center">Register</h3>
+                	<div ng-app="myapp" ng-controller="register">
+                     		<label>Username</label>
+                     		<input type="text" name="username" ng-model="username" class="form-control" />
+                     		<br />
+		     		<label>Email</label>
+                     		<input type="email" name="email" ng-model="email" class="form-control" ng-required/>
+                    		<br />
+		    		<label>Password</label>
+                     		<input type="password" name="password" ng-model="password" class="form-control" />
+                     		<br />
+                     		<input type="submit" name="btnInsert" class="btn btn-info" ng-click="insertData()" value="Register"/>
+                	</div>
+		</div>
 		</div>
            </div>  
       </body>  
- </html>  
- 
+ </html>

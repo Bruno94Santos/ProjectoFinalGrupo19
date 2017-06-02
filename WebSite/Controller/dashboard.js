@@ -1,10 +1,18 @@
-/**
- * Created by susana on 12/05/2017.
- */
 var app = angular.module("myapp",[]);
-app.controller("dashboard", function($scope, $http){
-    $scope.page = 1;
-    $http.get('../Model/concerts.php', {'page': $scope.page})
+app.controller("dashboard", function( $scope, $http){
+     //$scope.page = 1;
+     $http.get('../Model/dashboard.php')
+     .then(function(output){
+	$scope.dados = output;
+     });
+
+     $scope.logout = function(){
+	$http.get('../Model/logout.php')
+	     .then(function(response){
+		$window.location.href = '../View/login.html';
+	     });
+     };
+    /*$http.get('../Model/concert.php', {'page': $scope.page})
         .success(function(result){
             $scope.concerts = result;
         })
@@ -12,7 +20,7 @@ app.controller("dashboard", function($scope, $http){
         });
     $scope.showMore = function ( ) {
         $scope.page += 1;
-        $http.get('../Model/concerts.php', {'page': $scope.page})
+        $http.get('../Model/concert.php', {'page': $scope.page})
             .success(function(result){
                 $scope.concerts = result;
             })
@@ -36,7 +44,7 @@ app.controller("dashboard", function($scope, $http){
             .error(function(err){
             });
 
-    };
+    };*/
 
 });
 
