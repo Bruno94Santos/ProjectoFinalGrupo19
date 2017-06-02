@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="main.css" media="screen" />
     <script src="angular.min.js"></script>
+
     <script src="java.js"></script>
     <title>Musin Artist</title>
     <style>
@@ -32,13 +33,13 @@
 
         </div>
         <span onclick="openNav()"><a href="#" class = "btn btn-default btn-lg" role="button">Menu</a></span>
-        <div class="logo"><a href="index.html"<h1>MusIn</h1></a></div>
+        <div class="logo"><a href="index.html"><h1>MusIn</h1></a></div>
         <a href="profile.html"><img src="icon.png" alt="profile" style="width:3%;"></a>
         <a href="message.html"><img src="message.png" alt="message" style="width:4%;"> </a>
     </div>
 </head>
 <body>
-<div class="container" ng-controller="profile">
+<div class="container" ng-controller="artist">
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="well well-sm">
@@ -48,15 +49,15 @@
                     </div>
                     <div class="col-sm-6 col-md-8">
                         <h4>
-                            {{name}}</h4>
-                        <small><cite title="San Francisco, USA"> {{place}} <i class="glyphicon glyphicon-map-marker">
+                            {{profile}}</h4>
+                        <small><cite title="San Francisco, USA"> {{profile.place}} <i class="glyphicon glyphicon-map-marker">
                         </i></cite></small>
                         <p>
-                            <i class="glyphicon glyphicon-envelope"></i>{{mail}}
+                            <i class="glyphicon glyphicon-envelope"></i>{profile.{mail}}
                             <br />
-                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">{{web}}</a>
+                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">{{profile.web}}</a>
                             <br />
-                            <i class="glyphicon glyphicon-gift"></i>{{birthday}}</p>
+                            <i class="glyphicon glyphicon-gift"></i>{{profile.birthday}}</p>
                         <!-- Split button -->
                         <!--<div class="btn-group">
                             <button type="button" class="btn btn-primary">

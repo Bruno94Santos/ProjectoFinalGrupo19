@@ -56,80 +56,81 @@
             </div>
         </div>
 
-        <!-- DATE PICKER START
-        <md-content ng-controller="AppCtrl as ctrl" layout-padding="" ng-cloak="" class="datepickerdemoBasicUsage" ng-app="MyApp">
-            <div layout-gt-xs="row">
-                <div flex-gt-xs="">
-                    <h4>Standard date-picker</h4>
-                    <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"></md-datepicker>
-                </div>
-
-                <div flex-gt-xs="">
-                    <h4>Disabled date-picker</h4>
-                    <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" disabled=""></md-datepicker>
-                </div>
+    <!-- DATE PICKER START
+    <md-content ng-controller="AppCtrl as ctrl" layout-padding="" ng-cloak="" class="datepickerdemoBasicUsage" ng-app="MyApp">
+        <div layout-gt-xs="row">
+            <div flex-gt-xs="">
+                <h4>Standard date-picker</h4>
+                <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"></md-datepicker>
             </div>
 
-            <div layout-gt-xs="row">
-                <div flex-gt-xs="">
-                    <h4>Opening the calendar when the input is focused</h4>
-                    <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" md-open-on-focus=""></md-datepicker>
-                </div>
-
-                <div flex-gt-xs="">
-                    <h4>Date-picker that goes straight to the year view</h4>
-                    <md-datepicker ng-model="ctrl.myDate" md-current-view="year" md-placeholder="Enter date"></md-datepicker>
-                </div>
-            </div>
-
-            <div layout-gt-xs="row">
-                <div flex-gt-xs="">
-                    <h4>Custom calendar trigger</h4>
-                    <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" md-is-open="ctrl.isOpen"></md-datepicker>
-                    <md-button class="md-primary md-raised" ng-click="ctrl.isOpen = true">Open</md-button>
-                </div>
-            </div>
-        </md-content>
-
-        DATE PICKER END-->
-
-        <div class="container">
-            <div class="row col-10" ng-repeat="x in event_tags">
-                <br>
-                <label for="info1" class="btn btn-info">{{x.tag}} <input type="checkbox" id="info1" class="badgebox"><span class="badge">&check;</span></label>
-
-            </div>
-        </div>
-        <br>
-
-
-        <div id="myRadioGroup">
-            Free<input type="radio" name="free.payed" checked="checked" value="TRUE" ng-model="free.payed"  />
-            Payed<input type="radio" name="free.payed" value="FALSE" ng-model="free.payed" />
-            <p>{{free.payed}}</p>
-            <div id="Pay3" class="desc" ng-show="free.payed == FALSE">
-                <div class="form-group row">
-                    <label for="example-search-input" class="col-2 col-form-label">Ticket number</label>
-                    <div class="col-10">
-                        <input class="form-control" type="number" ng-model="total_seats" placeholder="100" id="example-search-input">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="example-search-input" class="col-2 col-form-label">Ticket Price</label>
-                    <div class="col-10">
-                        <input class="form-control" type="number" ng-model="price" placeholder="Euro" id="example-search-input">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="form-group row">
-            <div class="col-10">
-                <button type="submit" class="btn btn-primary" ng-click="insertData()">Submit</button>
+            <div flex-gt-xs="">
+                <h4>Disabled date-picker</h4>
+                <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" disabled=""></md-datepicker>
             </div>
         </div>
 
+        <div layout-gt-xs="row">
+            <div flex-gt-xs="">
+                <h4>Opening the calendar when the input is focused</h4>
+                <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" md-open-on-focus=""></md-datepicker>
+            </div>
+
+            <div flex-gt-xs="">
+                <h4>Date-picker that goes straight to the year view</h4>
+                <md-datepicker ng-model="ctrl.myDate" md-current-view="year" md-placeholder="Enter date"></md-datepicker>
+            </div>
+        </div>
+
+        <div layout-gt-xs="row">
+            <div flex-gt-xs="">
+                <h4>Custom calendar trigger</h4>
+                <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" md-is-open="ctrl.isOpen"></md-datepicker>
+                <md-button class="md-primary md-raised" ng-click="ctrl.isOpen = true">Open</md-button>
+            </div>
+        </div>
+    </md-content>
+
+    DATE PICKER END-->
+
+    <div class="container">
+        <div class="row col-10" ng-repeat="x in event_tags">
+            <br>
+            <label for="info1" class="btn btn-info">{{x.tag}} <input type="checkbox" id="info1" class="badgebox"><span
+                    class="badge">&check;</span></label>
+
+        </div>
     </div>
+    <br>
+    <form id="myRadioGroup">
+        Free<input type="radio" checked value="0" ng-model="free.payed"/>
+        Payed<input type="radio" value="1" ng-model="free.payed"/>
+    </form>
 
+    <div id="Pay3" class="desc" ng-show="free.payed == 1">
+        <div class="form-group row">
+            <label for="example-search-input" class="col-2 col-form-label">Ticket number</label>
+            <div class="col-10">
+                <input class="form-control" type="number" ng-model="total_seats" placeholder="100"
+                       class="example-search-input">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-search-input" class="col-2 col-form-label">Ticket Price</label>
+            <div class="col-10">
+                <input class="form-control" type="number" ng-model="price" placeholder="Euro"
+                       class="example-search-input">
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="form-group row">
+    <div class="col-10">
+        <button type="submit" class="btn btn-primary" ng-click="insertData()">Submit</button>
+    </div>
+</div>
+
+</div>
 </body>
 </html>

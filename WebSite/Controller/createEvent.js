@@ -14,7 +14,8 @@ app.controller("insertEvent", function($scope, $http){
             $scope.total_seats = null;
             $scope.price = null;
         });
-    }
+    };
+    $scope.free.payed = 0;
 });
 
 /**********************SIDE BAR / MENU */
