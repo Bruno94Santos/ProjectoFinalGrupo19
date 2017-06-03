@@ -62,6 +62,6 @@ else{
 
 
 
-<?php /*$conn->close();*/?>
+<?php $conn->close();?>
 </body>
 </html>
