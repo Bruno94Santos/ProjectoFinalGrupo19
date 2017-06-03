@@ -9,7 +9,7 @@ if(!isset($_SESSION["loggedin"])){
 header("Content-Type: application/json; charset=UTF-8");
 
 $data = json_decode(file_get_contents("php://input"));
-$connection = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 $output="";
 $output .= '{"Username":"' . $_SESSION["username"] . '",';
 $output .= '"UserID":"' . $_SESSION["id"] . '",';
@@ -21,29 +21,28 @@ $output .= '"Admin":"' . 0 . '"}';
 echo $output;
 
 
-function get_media($id){
-    $result = $conn->query("SELECT * FROM media WHERE id = $id LIMIT ,3");
-    if($result){
-        if (mysqli_num_rows($result)>0){
-            $linha=mysqli_fetch_assoc($result);
-            echo "<div class='thumbnail'>";
-            echo "<h3>".$linha['song']."</h3>";
-            echo "<p>".$linha['artist']."</p>";
-            echo "<p>".$linha['media'] ."</p>";
-            echo "<p><a href='concert.php?id=".$linha["id"]."' class='btn btn-primary' role='button'>More Info</a></p>";
-            "</div>";
+$result = $conn->query("SELECT * FROM media WHERE id = $id LIMIT ,3");
+if($result){
+    if (mysqli_num_rows($result)>0){
+        $linha=mysqli_fetch_assoc($result);
+        echo "<div class='thumbnail'>";
+        echo "<h3>".$linha['song']."</h3>";
+        echo "<p>".$linha['artist']."</p>";
+        echo "<p>".$linha['media'] ."</p>";
+        echo "<p><a href='concert.php?id=".$linha["id"]."' class='btn btn-primary' role='button'>More Info</a></p>";
+        "</div>";
 
-            return $output;
-        }
-        else{
-            echo "Cannot find media. Media might have been deleted.";
-        }
+        return $output;
     }
     else{
-        echo "Could not establish connection.";
+        echo "Cannot find media. Media might have been deleted.";
     }
 }
-'<button class="btn btn-default center-block" name="submit">Show More</button>';
+else{
+    echo "Could not establish connection.";
+};
+
+echo '<button class="btn btn-default center-block" name="submit">Show More</button>';
 
 
 $result = $conn->query("SELECT * FROM events LIMIT ,3");
