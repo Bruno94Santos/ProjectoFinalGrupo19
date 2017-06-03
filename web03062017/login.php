@@ -13,11 +13,6 @@ $connection = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 	<meta charset="UTF-8">
 	<title>Login</title>
 	<meta name="viewport" content="width=device-width">
-<<<<<<< HEAD
-=======
-	<link rel="stylesheet" href="css/form.css">
->>>>>>> origin/Versão-teste
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 

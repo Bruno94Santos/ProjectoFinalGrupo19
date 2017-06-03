@@ -68,7 +68,7 @@ if ($_SESSION["loggedin"] == 0) {
             <h4 class="page-header">Register</h4>
             <form action="register.php" method="post">
                 <div class="form-group float-label-control">
-                    <label form="">Username</label>
+                    <label for="">Username</label>
                     <input class="form-control" type="text" name="username" required>
                 </div>
                 <div class="form-group float-label-control">
