@@ -48,17 +48,24 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 	}
 	
 	?>
-	<div>
-	<form action="upload.php" method="post" enctype="multipart/form-data"> <!--idk what enctype is-->
-		<p>Submit your track below:</p>
-		Track name:<br>
-		<input type="text" name="description" required><br>
-		File:
-		<input name="newTrack" type="file" accept="audio/*" required />
-		<input name="Submit" type="submit" value="Upload">
-	</form>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<form action="upload.php" method="post" enctype="multipart/form-data"> <!--idk what enctype is-->
+					<p>Submit your track below:</p>
+					<div class="form-group float-label-control">
+						<label>Track name:</label>
+						<input class="form-control" type="text" name="description" required>
+					</div>
+					<div class="form-group float-label-control">
+						<label>File:</label>
+						<input class="form-control" name="newTrack" type="file" accept="audio/*" required />
+					</div>
+					<button class="btn btn-default center-block" type="submit" name="submit">Upload</button>
+				</form>
+			</div>
+		</div>
 	</div>
-	
 <?php $conn->close();?>
 </body>
 </html>

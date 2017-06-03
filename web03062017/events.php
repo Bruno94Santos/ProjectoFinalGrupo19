@@ -42,12 +42,12 @@ if($result){
     while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
         	$linha=mysqli_fetch_assoc($result);
             echo "<div class='thumbnail'>";
-            echo "<h3>".$linha['event_name']."</h3>";
-            echo "<p>".$linha['event_time']."</p>";
-            echo "<p>".$linha['location']."</p>";
-            echo "<p>".$linha['price'] ."</p>";
-            echo "<p><a href='concert.php?id=".$linha["id"]."' class='btn btn-primary' role='button'>More Info</a></p>";
-            "</div>";
+                 echo "<h3>".$linha['event_name']."</h3>";
+                 echo "<p>".$linha['event_time']."</p>";
+                 echo "<p>".$linha['location']."</p>";
+                 echo "<p>".$linha['price'] ."</p>";
+                 echo "<p><a href='concert.php?id=".$linha["id"]."' class='btn btn-primary' role='button'>More Info</a></p>";
+                "</div>";
 
     }
     $output ='{"records":['.$output.']}';
