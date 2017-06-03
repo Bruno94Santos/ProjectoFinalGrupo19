@@ -125,23 +125,23 @@ if (isset($_POST['submit'])) {
     <div class="row" style="padding-left: 10%; padding-right: 10%">
         <div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
             <h4 class="page-header">Buying</h4>
-            <form method="post" class="buyticket" action="buyticket.php">
+            <form method="post" action="buyticket.php">
                 <div class="form-group float-label-control">
                     <label for="">Full name</label>
-                    <input type="text" name="name" required>
+                    <input class="form-control" type="text" name="name" required>
                 </div>
                 <div class="form-group float-label-control">
                     <label>Phone</label>
-                    <input type="tel" name="phone"> <!--check if input type tel works-->
+                    <input class="form-control" type="tel" name="phone"> <!--check if input type tel works-->
                 </div>
                 <div class="form-group float-label-control">
                     <label>Email</label>
-                    <input type="email" name="email" required>
+                    <input class="form-control" type="email" name="email" required>
                 </div>
                 <br>
                 <div class="form-group float-label-control">
                     <label>Card type</label><!-- 				VER BOOTSTRAP						-->
-                    <select id="pickup_place" name="pickup_place">
+                    <select class="form-control" id="pickup_place" name="pickup_place">
                         <option value="" selected="selected">Select One</option>
                         <option value="visa">Visa</option>
                         <option value="mastercard">MasterCard</option>
@@ -150,22 +150,22 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="form-group float-label-control">
                     <label>Card number</label>
-                    <input type="text" name="pickup_time" required>
+                    <input class="form-control" type="text" name="pickup_time" required>
                 </div>
                 <div class="form-group float-label-control">
                     <label>CVV</label>
-                    <input type="int" name="dropoff_place">
+                    <input  class="form-control" type="int" name="dropoff_place">
                 </div>
                 <div class="form-group float-label-control">
                     <label>Name on card</label>
-                    <input type="text" name="customer_name" required>
+                    <input class="form-control" type="text" name="customer_name" required>
                 </div>
                 <div class="form-group float-label-control">
                     <label>Special Instructions</label>
-                    <textarea name="comments" maxlength="500"></textarea>
+                    <textarea class="form-control" name="comments" maxlength="500"></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="submit" name='submit' value="Submit" class="form-log-in-with-existing">
+                    <input type="submit" name='submit' value="Submit" class="btn btn-default center-block">
                 </div>
             </form>
 
