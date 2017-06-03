@@ -13,10 +13,28 @@ $connection = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 	<meta charset="UTF-8">
 	<title>Login</title>
 	<meta name="viewport" content="width=device-width">
+<<<<<<< HEAD
+=======
 	<link rel="stylesheet" href="css/form.css">
+>>>>>>> origin/Versão-teste
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 </head>
+
 <body>
+<?php
+include "header.php";
+?>
 <?php
 	if($_SESSION["loggedin"]==0){
 		if(isset($_POST['submit'])){
@@ -56,6 +74,25 @@ $connection = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 		<div class="row">
         	<div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
                 <h1>Login</h1>
+<<<<<<< HEAD
+				<div class="form-group float-label-control">
+					<label>
+						<span>Username/email</span>
+						<input type="text" name="username" required>
+					</label>
+				</div>
+				<div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
+					<label>
+						<span>Password</span>
+						<input type="password" name="password" required>
+		
+					</label>
+				</div>
+				<div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
+					<button type="submit" name='submit'>Login</button>
+				</div>
+					If you don't have an account<a href="register.php" class="form-log-in-with-existing">Sign Up here</a>
+=======
 			<div>
 			<div class="form-group float-label-control">
 				<label>
@@ -74,6 +111,7 @@ $connection = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 				<button type="submit" name='submit'>Login</button>
 			</div>
 				If you don't have an account<a href="register.php" class="form-log-in-with-existing">Sign Up here</a>
+>>>>>>> origin/Versão-teste
 			</div>
 		</div>
 	</form>
