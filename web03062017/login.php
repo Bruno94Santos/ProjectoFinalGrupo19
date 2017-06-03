@@ -75,7 +75,7 @@ if ($_SESSION["loggedin"] == 0) {
                     <input class="form-control" type="password" name="password" required>
                 </div>
                 <div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
-                    <button type="submit" name='submit'>Login</button>
+                    <button type="submit" name='submit' class="btn btn-default center-block">Login</button>
                 </div>
                 If you don't have an account<a href="register.php" class="form-log-in-with-existing">Sign Up here</a>
             </div>
