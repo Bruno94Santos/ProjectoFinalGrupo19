@@ -60,8 +60,8 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 					<div class="form-group float-label-control">
 						<label>File:</label>
 						<input class="form-control" name="newTrack" type="file" accept="audio/*" required />
-						<input name="Submit" type="submit" value="Upload">
 					</div>
+					<button class="btn btn-default center-block" type="submit" name="submit">Upload</button>
 				</form>
 			</div>
 		</div>
