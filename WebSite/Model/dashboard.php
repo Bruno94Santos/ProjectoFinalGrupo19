@@ -20,29 +20,54 @@
 	$output .= '"Admin":"' . 0 . '"}';
 	echo $output;
 
- 	function get_media($id){
-    		$result = $conn->query("SELECT * FROM media WHERE id = $id");
-    		if($result){
-    			if (mysqli_num_rows($result)>0){
-    				$linha=mysqli_fetch_assoc($result);
-    				$output="";
-    				$output .= '{"MediaID":"'  . $linha["id"] . '",';
-    				$output .= '"ArtistID":"'  . $linha["artist"] . '",';
-    				$output .= '"IsSong":"'  . $linha["song"] . '",';
-    				$output .= '"Description":"'  . $linha["description"] . '",';
-    				$output .= '"Media":"'  . $linha["media"] . '",';
-    				$output .= '"NumberRatings":"'. $linha["rating_n"] . '",';
-    				$output .= '"SumRatings":"'. $linha["rating_sum"] . '",';
-    				$output .= '"MediaRating":"'. $linha["rating_n"]/$linha["rating_sum"] . '"}';
-    				return $output;
-    			}
-    			else{
-    				echo "Cannot find media. Media might have been deleted.";
-    			}
-    		}
-    		else{
-    			echo "Could not establish connection.";
-    		}
-    	}
+
+    function get_media($id){
+        $result = $conn->query("SELECT * FROM media WHERE id = $id LIMIT ,3");
+        if($result){
+            if (mysqli_num_rows($result)>0){
+                $linha=mysqli_fetch_assoc($result);
+                echo "<div class='thumbnail'>";
+                echo "<h3>".$linha['song']."</h3>";
+                echo "<p>".$linha['artist']."</p>";
+                echo "<p>".$linha['media'] ."</p>";
+                echo "<p><a href='concert.php?id=".$linha["id"]."' class='btn btn-primary' role='button'>More Info</a></p>";
+                "</div>";
+
+                return $output;
+            }
+            else{
+                echo "Cannot find media. Media might have been deleted.";
+            }
+        }
+        else{
+            echo "Could not establish connection.";
+        }
+    }
+'<button class="btn btn-default center-block" name="submit">Show More</button>';
+
+
+$result = $conn->query("SELECT * FROM events LIMIT ,3");
+    $output="";
+    if($result){
+        while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
+            $linha=mysqli_fetch_assoc($result);
+            echo "<div class='thumbnail'>";
+            echo "<h3>".$linha['event_name']."</h3>";
+            echo "<p>".$linha['event_time']."</p>";
+            echo "<p>".$linha['location']."</p>";
+            echo "<p>".$linha['price'] ."</p>";
+            echo "<p><a href='concert.php?id=".$linha["id"]."' class='btn btn-primary' role='button'>More Info</a></p>";
+            "</div>";
+
+        }
+        $output ='{"records":['.$output.']}';
+        return $output;
+    }
+    else{
+        echo "Could not establish connection.";
+    }
+'<button class="btn btn-default center-block" name="submit">Show More</button>';
+
+
 $connection->close();
 ?>
