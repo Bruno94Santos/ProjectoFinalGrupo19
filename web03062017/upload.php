@@ -53,11 +53,15 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 			<div class="col-xs-12">
 				<form action="upload.php" method="post" enctype="multipart/form-data"> <!--idk what enctype is-->
 					<p>Submit your track below:</p>
-					Track name:<br>
-					<input type="text" name="description" required><br>
-					File:
-					<input name="newTrack" type="file" accept="audio/*" required />
-					<input name="Submit" type="submit" value="Upload">
+					<label>
+						<spam>Track name:</spam>
+						<input type="text" name="description" required>
+					</label>
+					<label>
+						<spam>File:</spam>
+						<input name="newTrack" type="file" accept="audio/*" required />
+						<input name="Submit" type="submit" value="Upload">
+					</label>
 				</form>
 			</div>
 		</div>
