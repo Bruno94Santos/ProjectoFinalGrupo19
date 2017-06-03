@@ -74,36 +74,16 @@ include "header.php";
 		<div class="row">
         	<div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
                 <h1>Login</h1>
-<<<<<<< HEAD
-				<div class="form-group float-label-control">
-					<label>
-						<span>Username/email</span>
-						<input type="text" name="username" required>
-					</label>
-				</div>
-				<div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
-					<label>
-						<span>Password</span>
-						<input type="password" name="password" required>
-		
-					</label>
-				</div>
-				<div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
-					<button type="submit" name='submit'>Login</button>
-				</div>
-					If you don't have an account<a href="register.php" class="form-log-in-with-existing">Sign Up here</a>
-=======
-			<div>
 			<div class="form-group float-label-control">
 				<label>
 					<span>Username/email</span>
-					<input type="text" name="username" required>
+					<input class="form-control" type="text" name="username" required>
 				</label>
 			</div>
 			<div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
 				<label>
 					<span>Password</span>
-					<input type="password" name="password" required>
+					<input class="form-control" type="password" name="password" required>
 	
 				</label>
 			</div>
@@ -111,7 +91,6 @@ include "header.php";
 				<button type="submit" name='submit'>Login</button>
 			</div>
 				If you don't have an account<a href="register.php" class="form-log-in-with-existing">Sign Up here</a>
->>>>>>> origin/Versão-teste
 			</div>
 		</div>
 	</form>
