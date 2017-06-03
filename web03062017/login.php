@@ -12,6 +12,7 @@ $connection = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 	
 	<meta charset="UTF-8">
 	<title>Login</title>
+	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="css/form.css">
 
 </head>
@@ -50,35 +51,33 @@ $connection = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 	}
 ?>
 
-
-	<form class="form" action="login.php" method="post">
-		<div class="form-register-login">
-                	<div class="form-white-background">
-				<div class="form-title-row">
-                        		<h1>Login</h1>
-                    		</div>
-				<div class="form-row">
-					<label>
-						<span>Username/email</span>
-						<input type="text" name="username" required>
-					</label>
-				</div>
-				<div class="form-row">
-					<label>
-						<span>Password</span>
-						<input type="password" name="password" required>
-		
-					</label>
-				</div>
-				<div class="form-row">
-					<button type="submit" name='submit'>Login</button>
-				</div>
+<div class="container">
+	<form action="login.php" method="post">
+		<div class="row">
+        	<div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
+                <h1>Login</h1>
+			<div>
+			<div class="form-group float-label-control">
+				<label>
+					<span>Username/email</span>
+					<input type="text" name="username" required>
+				</label>
+			</div>
+			<div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
+				<label>
+					<span>Password</span>
+					<input type="password" name="password" required>
+	
+				</label>
+			</div>
+			<div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
+				<button type="submit" name='submit'>Login</button>
+			</div>
 				If you don't have an account<a href="register.php" class="form-log-in-with-existing">Sign Up here</a>
 			</div>
 		</div>
 	</form>
-	
-
+</div>
 <?php $connection->close();?>
 
 </body>
