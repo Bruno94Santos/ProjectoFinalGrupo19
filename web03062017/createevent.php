@@ -52,29 +52,49 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 	<?php 
 	if ($_SESSION["event"]<=3){ 
 	?>
-	<form class="createartist" action="createartist.php" method="post">
-		<label>Event name:</label><br>
-			<input type="text" name="name" required><br>
-		<label>Description:</label><br>
-			<input type="text" name="description"><br>
-		<label>Location:</label><br>
-			<input type="text" name="location"><br>
-		<label>Event type:</label></br>
-			<input type="radio" name="optradio" value="0" checked="checked">Concert<br>
-			<input type="radio" name="optradio" value="1">Jam session<br>
-		<label>Ticket price:</label><br>
-			<input type="checkbox" name="free" checked="checked" value="free" />Free<br>
-			<input type="number" min="0.00" max="10000.00" step="0.01" />€<br>
-		<label>Event time:</label><br>
-			<input type="datetime-local" id="datetime"><br>
-
-		<label>Number of tickets:</label><br>
-			<input type="int" name="number" placeholder="50"><br>
-		<label>Cover image:</label><br>
-			input type="file" name="picture" accept="image/*"><br><!--ver da imagem-->
-		<br>
-		<input type="submit" name='submit' value="Create">
-	</form>
+	<div class="container">
+		<div class="row">
+			<div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
+				<form class="createartist" action="createartist.php" method="post">
+					<div class="form-group float-label-control">
+						<label>Event name:</label><br>
+						<input type="text" name="name" required><br>
+					</div>
+					<div class="form-group float-label-control">
+						<label>Description:</label><br>
+						<input type="text" name="description"><br>
+					</div>
+					<div class="form-group float-label-control">
+						<label>Location:</label><br>
+						<input type="text" name="location"><br>
+					</div>
+					<div class="form-group float-label-control">
+						<label>Event type:</label></br>
+						<input type="radio" name="optradio" value="0" checked="checked">Concert<br>
+						<input type="radio" name="optradio" value="1">Jam session<br>
+					</div>
+					<div class="form-group float-label-control">
+						<label>Ticket price:</label><br>
+						<input type="checkbox" name="free" checked="checked" value="free" />Free<br>
+						<input type="number" min="0.00" max="10000.00" step="0.01" />€<br>
+					</div>
+					<div class="form-group float-label-control">
+						<label>Event time:</label><br>
+						<input type="datetime-local" id="datetime"><br>
+					</div>
+					<div class="form-group float-label-control">
+						<label>Number of tickets:</label><br>
+						<input type="int" name="number" placeholder="50"><br>
+					</div>
+					<div class="form-group float-label-control">
+						<label>Cover image:</label><br>
+						input type="file" name="picture" accept="image/*"><br><!--ver da imagem-->
+					</div>
+					<input type="submit" name='submit' value="Create">
+				</form>
+			</div>
+		</div>
+	</div>
 	<?php }
 	else{
 		echo "You've created too many events in a row. Please wait before trying again.";
