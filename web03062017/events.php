@@ -36,7 +36,7 @@ $id=$_GET["id"];
 
 $data = json_decode(file_get_contents("php://input"));
 // function get_events_by_page($page){
-$result = $conn->query("SELECT * FROM events LIMIT $data->page,3");
+$result = $conn->query("SELECT * FROM events LIMIT $page,3");
 $output="";
 if($result){
     while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
