@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include "../inc/dbinfo.inc";
 if(!isset($_SESSION["loggedin"])){
@@ -9,13 +9,28 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Create artist page</title>
+    <meta charset="UTF-8">
+    <title>Create artist page</title>
+    <meta name="viewport" content="width=device-width">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--<link rel="stylesheet" href="css/form.css">-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 </head>
 
 <body>
-	<?php include "header.php"; ?>
-	<?php
+<?php include "header.php"; ?>
+<?php
 	if($_SESSION["loggedin"]==1){
 		if(isset($_POST['submit'])){
 			$user_id=$_SESSION["id"];
@@ -46,45 +61,46 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 	else{
 		echo "Can't create an artist without being logged in.";
 	}
-	
-	?>
-	
-<center>
+
+?>
+
 <!-- validar caracteres nos fields do form para nao haver injeccao de codigo-->
 
-	<div class="container">
-	<?php 
-	if ($_SESSION["artist"]<=3){ 
-	?>
-		<form class="createartist" action="createartist.php" method="post">
-			<div class="class="createartist-group">
-				<label >Artist name</label>
-				<input type="text" class="createartist-control" name="name" required />
-			</div>
-			<div class="class="createartist-group">
-				<label>Biography</label>
-				<input type="text" class="createartist-control" name="description" />
-			</div>
-			<div class="class="createartist-group">
-				<label>Location</label>
-				<input type="text" class="createartist-control" name="location" />
-			<div class="class="createartist-group">
-				<label>Picture</label>
-				<input type="file" name="picture" accept="image/*" />
-			</div>
-			<div class="class="createartist-group">
-				<input type="checkbox" name="terms" value="Yes" /> I have read and accepted our <a href="terms.html">Terms of Use, and will not be posting content I don't own or don't have permission to share.</a>
-			</div>
-			<button type="submit" class="btn btn-primary" name='submit'>Create</button>
-		</form>
-	<?php }
+<div class="container">
+    <?php
+	if ($_SESSION["artist"]<=3){
+    ?>
+    <div class="row" style="padding-left: 10%; padding-right: 10%">
+        <form class="createartist" action="createartist.php" method="post">
+            <div class="form-group float-label-control">
+                <label>Artist name</label>
+                <input type="text" class="form-control" name="name" required/>
+            </div>
+            <div class="form-group float-label-control">
+                <label>Biography</label>
+                <input type="text" class="form-control" name="description"/>
+            </div>
+            <div class="form-group float-label-control">
+                <label>Location</label>
+                <input type="text" class="form-control" name="location"/>
+            </div>
+            <div class="form-group float-label-control">
+                <label>Select File</label>
+                <input type="file" name="picture" accept="image/*" />
+            </div>
+                <div class="form-group float-label-control">
+                    <input type="checkbox" name="terms" value="Yes"/> I have read and accepted our <a href="terms.html">Terms
+                        of Use, and will not be posting content I don't own or don't have permission to share.</a>
+                </div>
+                <button type="submit" class="btn btn-default center-block" name='submit'>Create</button>
+        </form>
+        <?php }
 	else{
 		echo "You've created too many artist pages in a row. Please wait before trying again.";
 	}
-	?>
-	</div>
-</center>
+        ?>
+    </div>
 
-	<?php $conn->close();?>
+    <?php $conn->close(); ?>
 </body>
 </html>
