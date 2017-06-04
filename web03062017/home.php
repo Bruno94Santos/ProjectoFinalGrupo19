@@ -31,7 +31,7 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
                 echo "<p><a href='event.php?id=" . $linha["id"] . "' class='btn btn-primary' role='button'>More Info</a></p>";
                 echo "</div>";*/
                 echo '<div style=" border: solid gainsboro;border-radius: 10px; border-width: 2px; margin-bottom: 2px;"  class="col-xs-12">
-                <a href="artist.php?id=' . $linha["artist_id"] . '">
+                <a href="event.php?id=' . $linha["id"] . '">
                     <div class="col-xs-2">
                     <img class="img-responsive" src="http://placehold.it/100x70">
                     </div>
@@ -78,7 +78,7 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
             echo "<p><a href='concert.php?id=" . $linha["id"] . "' class='btn btn-primary' role='button'>More Info</a></p>";
             "</div>";*/
                 echo '<div style=" border: solid gainsboro;border-radius: 10px; border-width: 2px; margin-bottom: 2px;"  class="col-xs-12">
-                <a href="event.php?id=' . $linha["id"] . '">
+                <a href="artist.php?id=' . $linha["artist"] . '">
                     <div class="col-xs-2">
                     <img class="img-responsive" src="http://placehold.it/100x70">
                     </div>
