@@ -36,7 +36,7 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 include "header.php"; ?>
 
 <div class='container'>
-    <h2>Events</h2>
+    <h2>Artists</h2>
 <?php
 $id = $_GET["id"];
 
