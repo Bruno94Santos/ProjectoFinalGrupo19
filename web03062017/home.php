@@ -58,7 +58,7 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 
             }
         }
-        echo "<br><button class='btn btn-default center-block' name='submit'>Show More</button><br>";
+        echo "<button class='btn btn-default center-block' name='submit'>Show More</button>";
     } else {
         echo "Could not establish connection.";
     }
@@ -100,7 +100,7 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 
 
         }
-        echo "<br><button class='btn btn-default center-block' name='submit'>Show More</button><br>";
+        echo "<button class='btn btn-default center-block' name='submit'>Show More</button>";
     } else {
         echo "Could not establish connection.";
     }
