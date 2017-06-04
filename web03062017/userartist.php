@@ -17,20 +17,39 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 <body>
 <?php include "header.php"; ?>
 <?php
-echo "<div class='jumbotron'>";
+/*echo "<div class='jumbotron'>";*/
 echo "<div class='container'>";
+echo "<h2>Meus Artistas</h2>";
 if ($_SESSION["is_artist"] == 1) {
     $user_id = $_SESSION["id"];
     $result = $conn->query("SELECT * FROM artists WHERE id = $user_id");
     if ($result) {
         while ($linha = $result->fetch_array(MYSQLI_ASSOC)) {
-            //echo "<div class='container'>";
+            /*//echo "<div class='container'>";
             echo "<div><a href='artist.php?id=" . $linha["artist_id"] . "'>" . $linha["name"] . "</a></div>";
             echo "<div>" . $linha["description"] . "</div>";
             echo "<div><img src='" . $linha["picture"] . "'></div>"; //VER DA IMAGEM
-            //echo "</div>";
+            //echo "</div>";*/
+            echo '<div style=" border: solid gainsboro;border-radius: 10px; border-width: 2px; margin-bottom: 2px;"  class="col-xs-12">
+                <a href="artist.php?id=' . $linha["artist_id"] . '">
+                    <div class="col-xs-2">
+                    <img class="img-responsive" src="http://placehold.it/100x70">
+                    </div>
+                    <div class="col-xs-7">
+                        <h4 class="product-name">
+                            <strong>' . $linha['name'] . '</strong>
+                        </h4>
+                        <h4>
+                            <small>' . $linha['description'] . '</small>
+                        </h4>
+                    </div>
+                    <div class="col-xs-1">
+                        <strong>' . $linha['location'] . '</strong>
+                    </div>
+                </a>
+            </div>';
         }
-        echo "<div>Do you have another band or solo artist name not listed here? You can always <a href='createartist.php'>create another artist page</a></div>.";
+        echo "<div>Do you have another band or solo artist name not listed here? You can always <a href='createartist.php'>create another artist page</a>.</div>";
         echo "</div>";
     } else {
         echo "Could not establish connection.";
@@ -40,7 +59,7 @@ if ($_SESSION["is_artist"] == 1) {
     echo "<div>You don't have any artist pages of your own. Why not <a href='createartist.php'>create one</a> and start uploading the music you create today?</div>";
     echo "</div>";
 }
-echo "</div>";
+/*echo "</div>";*/
 ?>
 <?php $conn->close(); ?>
 </body>
