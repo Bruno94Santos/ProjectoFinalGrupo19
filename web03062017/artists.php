@@ -33,14 +33,18 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 
 <body>
 <?php
-include "header.php";
+include "header.php"; ?>
+
+<div class='container'>
+    <h2>Events</h2>
+<?php
 $id = $_GET["id"];
 
 $data = json_decode(file_get_contents("php://input"));
 // function get_events_by_page($page){
 /*$result = $conn->query("SELECT * FROM artists LIMIT $page,3"); */
-$result = $conn->query("SELECT * FROM artists");
-$output = "";
+$result = $conn->query("SELECT * FROM artists");//TODO
+
 if ($result) {
     echo '<div  class="row center-block">';
     while ($linha = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -72,15 +76,13 @@ if ($result) {
 
     }
     echo '</div>';
-    $output = '{"records":[' . $output . ']}';
-    return $output;
 } else {
     echo "Could not establish connection.";
 }
 ?>
 
 <button class="btn btn-default center-block" name="submit">Show More</button>
-
+</div>
 
 <?php $conn->close(); ?>
 </body>
