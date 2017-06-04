@@ -16,7 +16,7 @@ $output .= '"Email":"' . $_SESSION["email"] . '",';
 $output .= '"IsArtist":"' . $_SESSION["is_artist"] . '",';
 $output .= '"LoggedIn":"' . 1 . '",';
 $output .= '"Admin":"' . 0 . '"}';
-*/
+
 $id = $_SESSION["id"];
 
 $result = $conn->query("SELECT * FROM media WHERE id = $id LIMIT ,3");

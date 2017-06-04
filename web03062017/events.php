@@ -41,7 +41,7 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
         while ($linha = $result->fetch_array(MYSQLI_ASSOC)) {
             /*$linha = mysqli_fetch_assoc($result);*/
             echo '<div style=" border: solid gainsboro;border-radius: 10px; border-width: 2px; margin-bottom: 2px;"  class="col-xs-12">
-                <a href="artist.php?id=' . $linha["artist_id"] . '">
+                <a href="event.php?id=' . $linha["id"] . '">
                     <div class="col-xs-2">
                     <img class="img-responsive" src="http://placehold.it/100x70">
                     </div>

@@ -105,13 +105,12 @@ if ($result) {
         while ($linha = $result->fetch_array(MYSQLI_ASSOC)) {
             echo "<div>";
             $media_id = $linha["id"];
-            echo "<div>" . $linha["description"] . "</div>";
             $is_song = $linha["song"];
-            if ($linha["rating_n"] / $linha["rating_sum"] != 0) {
-                echo "<div>" . $linha["rating_n"] / $linha["rating_sum"] . "</div>";
-            }
-
             download($conn, $media_id, $s3);
+            echo "<div>" . $linha["description"] . "</div>";
+            if ($linha["rating_n"]  > 0) {
+                echo "<div>" . round($linha["rating_sum"] / $linha["rating_n"],2) . "</div>";
+            }
             echo "</div>";
         }
     } else {
