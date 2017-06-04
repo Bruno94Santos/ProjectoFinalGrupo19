@@ -13,6 +13,8 @@ $connection = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
     <meta charset="UTF-8">
     <title>Login</title>
     <meta name="viewport" content="width=device-width">
+    <!--<link rel="stylesheet" href="css/form.css">-->
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -53,35 +55,46 @@ if ($_SESSION["loggedin"] == 0) {
                 echo "Username/email does not exist.";
             }
         } else {
-            echo "Could not establish connection.";
+            echo "<div class='container'><div class='alert alert-danger'>Could not establish connection.</div></div>";
         }
     }
+
+    ?>
+
+    <div class="container">
+        <div class="row" style="padding-left: 10%; padding-right: 10%">
+            <div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
+                <h4 class="page-header">Login</h4>
+                <form action="login.php" method="post">
+                    <div class="form-group float-label-control">
+                        <label form="">Username</label>
+                        <input class="form-control" type="text" name="username" required>
+                    </div>
+                    <div class="form-group float-label-control">
+                        <label for="">Password</label>
+                        <input class="form-control" type="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-default center-block" type="submit" name="submit">Login</button>
+                    </div>
+                    If you don't have an account<a href="register.php" class="form-log-in-with-existing"> sign up
+                        here</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <?php
 } else {
-    echo "Valid session already active.";
+    ?>
+    <div class="container">
+        <div class="alert alert-danger">
+            <strong>Valid session already active.</strong>
+        </div>
+    </div>
+    <?php
 }
 ?>
 
-<div class="container">
-    <form action="login.php" method="post">
-        <div class="row">
-            <div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
-                <h1>Login</h1>
-                <div class="form-group float-label-control">
-                    <label>Username/email</label>
-                    <input class="form-control" type="text" name="username" required>
-                </div>
-                <div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
-                    <label>Password </label>
-                    <input class="form-control" type="password" name="password" required>
-                </div>
-                <div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
-                    <button type="submit" name='submit' class="btn btn-default center-block">Login</button>
-                </div>
-                If you don't have an account<a href="register.php" class="form-log-in-with-existing">Sign Up here</a>
-            </div>
-        </div>
-    </form>
-</div>
 <?php $connection->close(); ?>
 
 </body>

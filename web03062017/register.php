@@ -56,51 +56,56 @@ if ($_SESSION["loggedin"] == 0) {
             echo "Password confirmation not valid.";
         }
     }
-} else {
-    echo "Cannot register while logged in.";
-}
-?>
+    ?>
 
-<!-- validar caracteres nos fields do form para nao haver injeccao de codigo-->
-<div class="container" >
-    <div class="row" style="padding-left: 10%; padding-right: 10%">
-        <div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
-            <h4 class="page-header">Register</h4>
-            <form action="register.php" method="post">
-                <div class="form-group float-label-control">
-                    <label for="">Username</label>
-                    <input class="form-control" type="text" name="username" required>
-                </div>
-                <div class="form-group float-label-control">
-                    <label for="">Email</label>
-                    <input class="form-control" type="email" name="email" required>
-                </div>
-                <div class="form-group float-label-control">
-                    <label for="">Password</label>
-                    <input class="form-control" type="password" name="password" required>
-                </div>
-                <div class="form-group float-label-control">
-                    <label for="">Confirm password</label>
-                    <input class="form-control" type="password" name="confirm" required>
-                </div>
-                 <div class="form-group float-label-control">
-                     <div>
-                         <label class="form-checkbox">
-                             <input type="checkbox" name="terms" value="Yes">
-                             <span>I have read and accept our <a href="terms.html">Terms of Use</a></span>
-                         </label>
-                     </div>
-                 </div>
-                 <div class="form-group">
-                     <button class="btn btn-default center-block" type="submit" name="submit">Register</button>
-                 </div>
-                Already have an account?<a href="login.php" class="form-log-in-with-existing">Login here</a>
-            </form>
+    <!-- validar caracteres nos fields do form para nao haver injeccao de codigo-->
+    <div class="container">
+        <div class="row" style="padding-left: 10%; padding-right: 10%">
+            <div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
+                <h4 class="page-header">Register</h4>
+                <form action="register.php" method="post">
+                    <div class="form-group float-label-control">
+                        <label form="">Username</label>
+                        <input class="form-control" type="text" name="username" required>
+                    </div>
+                    <div class="form-group float-label-control">
+                        <label for="">Email</label>
+                        <input class="form-control" type="email" name="email" required>
+                    </div>
+                    <div class="form-group float-label-control">
+                        <label for="">Password</label>
+                        <input class="form-control" type="password" name="password" required>
+                    </div>
+                    <div class="form-group float-label-control">
+                        <label for="">Confirm password</label>
+                        <input class="form-control" type="password" name="confirm" required>
+                    </div>
+                    <div class="form-group float-label-control">
+                        <div>
+                            <label class="form-checkbox">
+                                <input type="checkbox" name="terms" value="Yes">
+                                <span>I have read and accept our <a href="terms.html">Terms of Use</a></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-default center-block" type="submit" name="submit">Register</button>
+                    </div>
+                    Already have an account?<a href="login.php" class="form-log-in-with-existing"> Login</a>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-</div>
-
+    </div>
+    <?php
+} else {
+    ?>
+    <div class='alert alert-danger'>
+        <strong>Cannot register while logged in.</strong>
+    </div>
+    <?php
+}
+?>
 <?php $conn->close(); ?>
 </body>
 </html>

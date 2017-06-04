@@ -33,7 +33,7 @@ if (isset($_POST["Submit"])) {
     //retrieve post variables
     $fileName = $_FILES['newTrack']['name'];
     $fileTempName = $_FILES['newTrack']['tmp_name'];
-    $media = $id . "m" . $user_id . "m" . date('Y0m0d0H0i0s');
+    $media = $id . "m" . $user_id . "m" . date('Y0m0d0H0i0s') . strstr($fileName, '.');
     $description = $_POST["description"];
     $result = $conn->query("INSERT INTO media(artist,song,description,media,rating_sum,rating_n) VALUES ($id,TRUE,'$description','$media',0,0)");
     if ($result && $s3->putObjectFile($fileTempName, "musicprojectofinal", $media, S3::ACL_PUBLIC_READ)) {
@@ -48,7 +48,6 @@ if (isset($_POST["Submit"])) {
     <div class="row">
         <div class="col-xs-12">
             <form action="<?php echo 'upload.php?id=' . $id; ?>" method="post" enctype="multipart/form-data">
-                <!--idk what enctype is-->
                 <p>Submit your track below:</p>
                 <div class="form-group float-label-control">
                     <label>Track name:</label>
@@ -56,7 +55,7 @@ if (isset($_POST["Submit"])) {
                 </div>
                 <div class="form-group float-label-control">
                     <label>File</label>
-                    <input class="form-control" name="newTrack" type="file" required/>
+                    <input class="form-control" name="newTrack" accept="audio/*" type="file" required/>
                 </div>
                 <button class="btn btn-default center-block" type="submit" name="Submit">Upload</button>
             </form>

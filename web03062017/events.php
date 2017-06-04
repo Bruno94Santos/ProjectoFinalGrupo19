@@ -2,8 +2,8 @@
 session_start();
 include "../inc/dbinfo.inc";
 
-if(!isset($_SESSION["loggedin"])){
-    $_SESSION["loggedin"]=0;
+if (!isset($_SESSION["loggedin"])) {
+    $_SESSION["loggedin"] = 0;
 }
 $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 ?>
@@ -32,28 +32,27 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 <body>
 <?php
 include "header.php";
-$id=$_GET["id"];
+$id = $_GET["id"];
 
 $data = json_decode(file_get_contents("php://input"));
 // function get_events_by_page($page){
-$result = $conn->query("SELECT * FROM events LIMIT $page,3");
-$output="";
-if($result){
-    while($linha = $result->fetch_array(MYSQLI_ASSOC)) {
-        	$linha=mysqli_fetch_assoc($result);
-            echo "<div class='thumbnail'>";
-                 echo "<h3>".$linha['event_name']."</h3>";
-                 echo "<p>".$linha['event_time']."</p>";
-                 echo "<p>".$linha['location']."</p>";
-                 echo "<p>".$linha['price'] ."</p>";
-                 echo "<p><a href='concert.php?id=".$linha["id"]."' class='btn btn-primary' role='button'>More Info</a></p>";
-                "</div>";
+$result = $conn->query("SELECT * FROM events LIMIT 0,3");/* TODO $page,3*/
+$output = "";
+if ($result) {
+    while ($linha = $result->fetch_array(MYSQLI_ASSOC)) {
+        $linha = mysqli_fetch_assoc($result);
+        echo "<div class='thumbnail'>";
+        echo "<h3>" . $linha['event_name'] . "</h3>";
+        echo "<p>" . $linha['event_time'] . "</p>";
+        echo "<p>" . $linha['location'] . "</p>";
+        /* echo "<p>".$linha['price'] ."</p>";*/
+        echo "<p><a href='concert.php?id=" . $linha["id"] . "' class='btn btn-primary' role='button'>More Info</a></p>";
+        "</div>";
 
     }
-    $output ='{"records":['.$output.']}';
+    $output = '{"records":[' . $output . ']}';
     return $output;
-}
-else{
+} else {
     echo "Could not establish connection.";
 }
 ?>
@@ -61,7 +60,6 @@ else{
 <button class="btn btn-default center-block" name="submit">Show More</button>
 
 
-
-<?php $conn->close();?>
+<?php $conn->close(); ?>
 </body>
 </html>

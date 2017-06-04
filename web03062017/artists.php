@@ -46,7 +46,7 @@ if ($result) {
     while ($linha = $result->fetch_array(MYSQLI_ASSOC)) {
         $linha = mysqli_fetch_assoc($result);
         echo '<div style=" border: solid gainsboro;border-radius: 10px; border-width: 2px; margin-bottom: 2px;"  class="col-xs-12">
-                <a href="artist.php.php?id=' . $linha["id"] . '">
+                <a href="artist.php?id=' . $linha["artist_id"] . '">
                     <div class="col-xs-2">
                     <img class="img-responsive" src="http://placehold.it/100x70">
                     </div>
@@ -63,12 +63,12 @@ if ($result) {
                     </div>
                 </a>
             </div>';
-       /* echo "<div class='thumbnail'>";
-        echo "<h3>" . $linha['name'] . "</h3>";
-        echo "<h6 style='float:left'>Local:</h6><h4>" . $linha['location'] . "</h4>";
-        echo "<h6 style='float:left'>Descrição:</h6><h>" . $linha['description'] . "</h>";
-        echo "<p><a href='artist.php.php?id=" . $linha["id"] . "' class='btn btn-primary' role='button'>More Info</a></p>";
-        echo "</div>";*/
+        /* echo "<div class='thumbnail'>";
+         echo "<h3>" . $linha['name'] . "</h3>";
+         echo "<h6 style='float:left'>Local:</h6><h4>" . $linha['location'] . "</h4>";
+         echo "<h6 style='float:left'>Descrição:</h6><h>" . $linha['description'] . "</h>";
+         echo "<p><a href='artist.php?id=" . $linha["id"] . "' class='btn btn-primary' role='button'>More Info</a></p>";
+         echo "</div>";*/
 
     }
     echo '</div>';

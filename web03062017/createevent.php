@@ -10,7 +10,21 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Create artist page</title>
+    <title>Create event page</title>
+    <meta name="viewport" content="width=device-width">
+    <!--<link rel="stylesheet" href="css/form.css">-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -33,13 +47,13 @@ if ($_SESSION["loggedin"] == 1) {
         //verificar como se faz upload de imagem lol
         $result = $conn->query("INSERT INTO events(creator_id,picture,event_name,event_time,location,description, total_seats,seats_taken,price,sold_out,rating_sum,rating_n,is_jam) VALUES ($user_id,'$picture','$event_name','$event_time','$location','$description',$total_seats,0,$price,FALSE,0,0,$is_jam)");
         if (!$result) {
-            die("Error when creating event.");
+            die("<div class='alert alert-danger fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Error when creating event.</div>");
         } else {
-            echo "Created event with success.";
+            echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Created event with success.</div>";
         }
     }
 } else {
-    echo "You must be loged in to create an event.";
+    echo "You must be logged in to create an event.";
 }
 
 ?>
@@ -51,7 +65,7 @@ if ($_SESSION["event"] <= 3) {
     <div class="container">
         <div class="row" style="padding-left: 10%; padding-right: 10%; padding-bottom: 10%">
             <div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
-                <form class="createartist" action="createartist.php" method="post">
+                <form class="createartist" action="createevent.php" method="post">
                     <div class="form-group float-label-control">
                         <label>Event name:</label><br>
                         <input class="form-control" type="text" name="name" required><br>
@@ -66,13 +80,13 @@ if ($_SESSION["event"] <= 3) {
                     </div>
                     <div class="form-group float-label-control">
                         <label>Event type:</label></br>
-                        <input type="radio" name="optradio" value="0" checked="checked">Concert<br>
-                        <input type="radio" name="optradio" value="1">Jam session<br>
+                        <input type="radio" name="jam" value="0" checked="checked">Concert<br>
+                        <input type="radio" name="jam" value="1">Jam session<br>
                     </div>
                     <div class="form-group float-label-control">
-                        <label>Ticket price: €</label><br>
+                        <label>Ticket price: </label><br>
                         <input type="checkbox" name="free" checked="checked" value="free"/>Free<br>
-                        <input class="form-control" type="number" min="0.00" max="10000.00" step="0.01"/>
+                        <input class="form-control" type="number" min="0.00" max="10000.00" step="0.01"/>€
                     </div>
                     <div class="form-group float-label-control">
                         <label>Event time:</label><br>
