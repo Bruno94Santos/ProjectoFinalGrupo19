@@ -38,13 +38,13 @@ $id = $_GET["id"];
 
 $data = json_decode(file_get_contents("php://input"));
 // function get_events_by_page($page){
-/*$result = $conn->query("SELECT * FROM artists LIMIT $page,3");*/
+/*$result = $conn->query("SELECT * FROM artists LIMIT $page,3"); */
 $result = $conn->query("SELECT * FROM artists");
 $output = "";
 if ($result) {
     echo '<div  class="row center-block">';
     while ($linha = $result->fetch_array(MYSQLI_ASSOC)) {
-        $linha = mysqli_fetch_assoc($result);
+        /*$linha = mysqli_fetch_assoc($result);*/
         echo '<div style=" border: solid gainsboro;border-radius: 10px; border-width: 2px; margin-bottom: 2px;"  class="col-xs-12">
                 <a href="artist.php?id=' . $linha["artist_id"] . '">
                     <div class="col-xs-2">
