@@ -67,6 +67,45 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
         header("Location:events.php");
     }
 
+    $result = $conn->query("SELECT * FROM media LIMIT 0,3");
+    if ($result) {
+        while ($linha = $result->fetch_array(MYSQLI_ASSOC)) {
+            /*$linha = mysqli_fetch_assoc($result);
+            echo "<div class='thumbnail'>";
+            echo "<h3>" . $linha['song'] . "</h3>";
+            echo "<p>" . $linha['artist'] . "</p>";
+            echo "<p>" . $linha['media'] . "</p>";
+            echo "<p><a href='concert.php?id=" . $linha["id"] . "' class='btn btn-primary' role='button'>More Info</a></p>";
+            "</div>";*/
+                echo '<div style=" border: solid gainsboro;border-radius: 10px; border-width: 2px; margin-bottom: 2px;"  class="col-xs-12">
+                <a href="artist.php?id=' . $linha["artist"] . '">
+                    <div class="col-xs-2">
+                    <img class="img-responsive" src="http://placehold.it/100x70">
+                    </div>
+                    <div class="col-xs-4">
+                        <h4 class="product-name">
+                            <strong>' . $linha['song'] . '</strong>
+                        </h4>
+                        <h4>
+                            <small>' . $linha['media'] . '</small>
+                        </h4>
+                        <h4>
+                            <small>' . $linha['description'] . '</small>
+                        </h4>
+                    </div>
+                    <div class="col-xs-2">';
+                echo '</div>
+                </a>
+            </div>';
+
+
+        }
+        echo "<button class='btn btn-default center-block' name='submit'>Show More</button>";
+    } else {
+        echo "Could not establish connection.";
+    }
+
+
     ?>
 </div>
 </body>
