@@ -85,7 +85,7 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
     }
     ?>
 
-    <button class="btn btn-default center-block" name="submit">Show More</button>
+    <!--<button class="btn btn-default center-block" name="submit">Show More</button>-->
 </div>
 <?php $conn->close(); ?>
 </body>

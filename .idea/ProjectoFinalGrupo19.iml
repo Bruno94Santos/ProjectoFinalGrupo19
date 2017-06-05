@@ -12,9 +12,11 @@
       <library name="PHARS">
         <CLASSES>
           <root url="phar://$MODULE_DIR$/web03062017/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/web05062017/composer.phar/" />
         </CLASSES>
         <SOURCES>
           <root url="phar://$MODULE_DIR$/web03062017/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/web05062017/composer.phar/" />
         </SOURCES>
       </library>
     </orderEntry>

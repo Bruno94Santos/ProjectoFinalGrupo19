@@ -52,46 +52,43 @@ if ($_SESSION["loggedin"] == 0) {
 
                 header('Location: home.php');
             } else {
-                echo "Username/email does not exist.";
+                echo "<div class='alert alert-danger'>Username/email does not exist.</div>";
             }
         } else {
             echo "<div class='container'><div class='alert alert-danger'>Could not establish connection.</div></div>";
         }
     }
 
-    ?>
+?>
 
-    <div class="container">
-        <div class="row" style="padding-left: 10%; padding-right: 10%">
-            <div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
-                <h4 class="page-header">Login</h4>
-                <form action="login.php" method="post">
-                    <div class="form-group float-label-control">
-                        <label form="">Username</label>
-                        <input class="form-control" type="text" name="username" required>
-                    </div>
-                    <div class="form-group float-label-control">
-                        <label for="">Password</label>
-                        <input class="form-control" type="password" name="password" required>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-default center-block" type="submit" name="submit">Login</button>
-                    </div>
-                    If you don't have an account<a href="register.php" class="form-log-in-with-existing"> sign up
-                        here</a>
-                </form>
-            </div>
-        </div>
-    </div>
-    <?php
+<div class="container">
+ <div class="row" style="padding-left: 10%; padding-right: 10%">
+  <div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
+    <h4 class="page-header">Login</h4>
+     <form action="login.php" method="post">
+        <div class="form-group float-label-control">
+             <label form="">Username</label>
+             <input class="form-control" type="text" name="username" required>
+         </div>
+         <div class="form-group float-label-control">
+              <label for="">Password</label>
+              <input class="form-control" type="password" name="password" required>
+         </div>
+         <div class="form-group">
+               <button class="btn btn-default center-block" type="submit" name="submit">Login</button>
+         </div>
+         If you don't have an account<a href="register.php" class="form-log-in-with-existing"> sign up here</a>
+    </form>
+  </div>
+ </div>
+</div>
+<?php
 } else {
-    ?>
-    <div class="container">
-        <div class="alert alert-danger">
-            <strong>Valid session already active.</strong>
-        </div>
-    </div>
-    <?php
+?><div class="container">
+	<div class="alert alert-danger" >
+    		<strong>Valid session already active.</strong>
+	</div></div>
+<?php
 }
 ?>
 

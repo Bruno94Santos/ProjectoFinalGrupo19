@@ -15,11 +15,14 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 <body>
 <?php include "header.php"; ?>
 <div class='container'>
-    <h2>Events</h2>
+    <!--<h2>Musin</h2>
+	<h3>Made for indie music</h3>-->
+
     <?php
 
     $result = $conn->query("SELECT * FROM events LIMIT 0,3");
     if ($result) {
+echo "<h4>Popular events</h4>";
         while ($linha = $result->fetch_array(MYSQLI_ASSOC)) {
             if (intval($linha['total_seats']) > intval($linha['seats_taken'])) {
                 /*$linha = mysqli_fetch_assoc($result);
@@ -58,7 +61,7 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 
             }
         }
-        echo "<button class='btn btn-default center-block' name='submit'>Show More</button>";
+        //echo "<button class='btn btn-default center-block' name='submit'>Show More</button>";
     } else {
         echo "Could not establish connection.";
     }
@@ -66,6 +69,7 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
     if (isset($_POST['submit'])) {
         header("Location:events.php");
     }
+echo "<br><h4>Popular music</h4>";
 
     $result = $conn->query("SELECT * FROM media LIMIT 0,3");
     if ($result) {
@@ -84,23 +88,21 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
                     </div>
                     <div class="col-xs-4">
                         <h4 class="product-name">
-                            <strong>' . $linha['song'] . '</strong>
+                            <strong>' . $linha['description'] . '</strong>
                         </h4>
                         <h4>
                             <small>' . $linha['media'] . '</small>
-                        </h4>
-                        <h4>
-                            <small>' . $linha['description'] . '</small>
                         </h4>
                     </div>
                     <div class="col-xs-2">';
                 echo '</div>
                 </a>
-            </div>';
+            </div><br><br>';
 
 
         }
-        echo "<button class='btn btn-default center-block' name='submit'>Show More</button>";
+	echo "<center><h5>Made for indie music. <a href='terms.html'>Terms of Use</a></h5></center>";
+        //echo "<button class='btn btn-default center-block' name='submit'>Show More</button>";
     } else {
         echo "Could not establish connection.";
     }

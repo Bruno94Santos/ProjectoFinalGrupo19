@@ -19,7 +19,7 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 <?php
 /*echo "<div class='jumbotron'>";*/
 echo "<div class='container'>";
-echo "<h2>Meus Artistas</h2>";
+echo "<h2>My artist pages</h2>";
 if ($_SESSION["is_artist"] == 1) {
     $user_id = $_SESSION["id"];
     $result = $conn->query("SELECT * FROM artists WHERE id = $user_id");
@@ -28,7 +28,8 @@ if ($_SESSION["is_artist"] == 1) {
             /*//echo "<div class='container'>";
             echo "<div><a href='artist.php?id=" . $linha["artist_id"] . "'>" . $linha["name"] . "</a></div>";
             echo "<div>" . $linha["description"] . "</div>";
-            echo "<div><img src='" . $linha["picture"] . "'></div>"; //VER DA IMAGEM
+            header("Content-type: image/jpeg");
+	    echo "<div><img src='" . $linha["picture"] . "'></div>"; //VER DA IMAGEM
             //echo "</div>";*/
             echo '<div style=" border: solid gainsboro;border-radius: 10px; border-width: 2px; margin-bottom: 2px;"  class="col-xs-12">
                 <a href="artist.php?id=' . $linha["artist_id"] . '">
@@ -49,10 +50,10 @@ if ($_SESSION["is_artist"] == 1) {
                 </a>
             </div>';
         }
-        echo "<div>Do you have another band or solo artist name not listed here? You can always <a href='createartist.php'>create another artist page</a>.</div>";
+        echo "<br><div>Do you have another band or solo artist name not listed here? You can always <a href='createartist.php'>create another artist page</a>.</div>";
         echo "</div>";
     } else {
-        echo "Could not establish connection.";
+        echo "<div class='alert alert-success'>Could not establish connection.</div>";
         echo "</div>";
     }
 } else {

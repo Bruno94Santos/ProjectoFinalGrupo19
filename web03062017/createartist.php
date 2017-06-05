@@ -31,33 +31,39 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 <body>
 <?php include "header.php"; ?>
 <?php
-if ($_SESSION["loggedin"] == 1) {
-    if (isset($_POST['submit'])) {
-        $user_id = $_SESSION["id"];
-        if (!isset($_SESSION["artist"])) {
-            $_SESSION["artist"] += 1;
-        } else {
-            $_SESSION["artist"] = 1;
-        }
-        $name = $_POST["name"];
-        $location = $_POST["location"];
-        $description = $_POST["description"];
-        $picture = $_POST["picture"];
-        //verificar como se faz upload de imagem lol
-        $result = $conn->query("INSERT INTO artists(id,description,picture,location,name,rating_sum,rating_n) VALUES ($user_id,'$description','$picture','$location','$name',0,0)");
-        $res = $conn->query("UPDATE users SET is_artist=TRUE WHERE id = $user_id");
-        $_SESSION["is_artist"] = 1;
-        if (!$result || !$res) {
-            die("Error when creating artist.");
-        } else {
-            echo "Created artist with success.";
-            header("Location: userartist.php");
+	if($_SESSION["loggedin"]==1){
+		if(isset($_POST['submit'])){
+			$user_id=$_SESSION["id"];
+			if(!isset($_SESSION["artist"])){
+				$_SESSION["artist"]+=1;
+			}
+			else{
+				$_SESSION["artist"]=1;
+			}
+			$name=$_POST["name"];
+			$location=$_POST["location"];
+			$description=$_POST["description"];
+			$picture=$_POST["picture"];
+			//verificar como se faz upload de imagem lol
+			$result = $conn->query("INSERT INTO artists(id,description,picture,location,name,rating_sum,rating_n) VALUES ($user_id,'$description','$picture','$location','$name',0,0)");
+			$res = $conn->query("UPDATE users SET is_artist=TRUE WHERE id = $user_id");
+			$_SESSION["is_artist"]=1;
+			if(!$result || !$res){
+				die("<div class='alert alert-danger fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Error when creating artist.</div>");
+			}
+			else{
+				echo "<div class='alert alert-success fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Created artist with success.</div>";
+				//header_remove();
+				//header('Location: userartist.php');
+				//exit;
+echo '<meta http-equiv="refresh" content="0; URL=userartist.php">';
 
-        }
-    }
-} else {
-    echo "Can't create an artist without being logged in.";
-}
+			}
+		}
+	}
+	else{
+		echo "<div class='alert alert-danger'>Can't create an artist without being logged in.</div>";
+	}
 
 ?>
 
@@ -65,10 +71,11 @@ if ($_SESSION["loggedin"] == 1) {
 
 <div class="container">
     <?php
-    if ($_SESSION["artist"] <= 3){
+	if ($_SESSION["artist"]<=3){
     ?>
     <div class="row" style="padding-left: 10%; padding-right: 10%">
-        <form class="createartist" action="createartist.php" method="post">
+	<h4 class="page-header">Create an artist</h4>
+        <form class="createartist" action="" method="post">
             <div class="form-group float-label-control">
                 <label>Artist name</label>
                 <input type="text" class="form-control" name="name" required/>
@@ -83,21 +90,21 @@ if ($_SESSION["loggedin"] == 1) {
             </div>
             <div class="form-group float-label-control">
                 <label>Select File</label>
-                <input type="file" name="picture" accept="image/*"/>
+                <input type="file" name="picture" accept="image/*" />
             </div>
-            <div class="form-group float-label-control">
-                <input type="checkbox" name="terms" value="Yes"/> I have read and accepted our <a href="terms.html">Terms
-                    of Use, and will not be posting content I don't own or don't have permission to share.</a>
-            </div>
-            <button type="submit" class="btn btn-default center-block" name='submit'>Create</button>
+		<!--<button type="submit" class="btn btn-default center-block" name='submit' value='submit'>Create</button>-->
+		<input type="submit" name='submit' value="Create" class="btn btn-default center-block">
+
         </form>
         <?php }
-        else {
-            echo "You've created too many artist pages in a row. Please wait before trying again.";
-        }
+	else{
+		echo "<div class='alert alert-danger'>You've created too many artist pages in a row. Please wait before trying again.</div>";
+		echo '<meta http-equiv="refresh" content="0; URL=userartist.php">';
+
+	}
         ?>
     </div>
-
+</div>
     <?php $conn->close(); ?>
 </body>
 </html>

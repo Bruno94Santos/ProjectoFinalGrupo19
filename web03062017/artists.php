@@ -81,7 +81,7 @@ if ($result) {
 }
 ?>
 
-<button class="btn btn-default center-block" name="submit">Show More</button>
+<!--<button class="btn btn-default center-block" name="submit">Show More</button>-->
 </div>
 
 <?php $conn->close(); ?>
