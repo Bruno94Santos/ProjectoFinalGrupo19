@@ -32,7 +32,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="events.php">Events</a></li>
                 <li><a href="artists.php">Artists</a></li>
-                <li><a href="playlists.php">Playlists</a></li>
+                <!--<li><a href="playlists.php">Playlists</a></li> TODO-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
@@ -62,16 +62,16 @@
                                             </p>
                                             <p class="text-left small"><?php echo $_SESSION["email"]; ?></p>
                                             <p class="text-left">
-                                                <a href="profile.html"
-                                                   class="btn btn-primary btn-block btn-sm">Profile</a>
+                                                <!--<a href="profile.html"
+                                                   class="btn btn-primary btn-block btn-sm">Profile</a> TODO -->
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </li>
                             <li class="divider navbar-login-session-bg"></li>
-                            <li><a href="likes.php">Faves</a></li>
-                            <li class="divider"></li>
+                            <!--<li><a href="likes.php">Faves</a></li>
+                            <li class="divider"></li> TODO-->
                             <li><a href="myevent.php">My Events</a></li>
                             <li class="divider"></li>
                             <li><a href="userartist.php">My Artist page<!--Your music--></a></li>
