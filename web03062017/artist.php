@@ -97,19 +97,21 @@ if ($artist_user_id == $user_id) {
     //FEITO
 }
 
-
+echo '<div style="margin-top: 10px" class="row center-block">';
 //MUSICAS DO ARTISTA/DOWNLOAD DE MUSICAS
 $result = $conn->query("SELECT * FROM media WHERE artist = $id AND song=TRUE");
 if ($result) {
     if (mysqli_num_rows($result) > 0) {
         while ($linha = $result->fetch_array(MYSQLI_ASSOC)) {
-            echo "<div>";
+            echo '<div class="col-sm-12 col-xs-12" style="border-bottom: solid 1px #ddd; padding-bottom: 4px">';
             $media_id = $linha["id"];
             $is_song = $linha["song"];
             download($conn, $media_id, $s3);
-            echo "<div>" . $linha["description"] . "</div>";
+            echo "<div class='col-sm-3 col-xs-12'>" . $linha["description"] . "</div>";
             if ($linha["rating_n"]  > 0) {
-                echo "<div>" . round($linha["rating_sum"] / $linha["rating_n"],2) . "</div>";
+                echo "<div class='col-sm-2 col-xs-12'>" . round($linha["rating_sum"] / $linha["rating_n"],2) . "</div>";
+            } else {
+                echo "<div class='col-sm-12 col-xs-12'>0.00</div>";
             }
             echo "</div>";
         }
@@ -119,26 +121,29 @@ if ($result) {
 } else {
     echo "<div class='alert alert-danger'>Could not establish connection.</div>";
 }
-
+echo '</div><div style="height: 20px"></div><div>';
 
 //VIDEOS DO ARTISTA/DOWNLOAD DE VIDEO
 $result = $conn->query("SELECT * FROM media WHERE artist = $id AND song=FALSE");
 if ($result) {
     while ($linha = $result->fetch_array(MYSQLI_ASSOC)) {
-        echo "<div>";
+        echo '<div class="left-block col-md-4 col-xs-12" style="padding-bottom: 4px">';
         $media_id = $linha["id"];
-        echo "<div>" . $linha["description"] . "</div>";
         $is_song = $linha["song"];
-        if ($linha["rating_n"] / $linha["rating_sum"] != 0) {
-            echo "<div>" . $linha["rating_n"] / $linha["rating_sum"] . "</div>";
-        }
         download($conn, $media_id, $s3);
+        echo "<div class='col-md-6 col-xs-6'>" . $linha["description"] . "</div>";
+        if ($linha["rating_n"] / $linha["rating_sum"] != 0) {
+            echo "<div class='col-md-6 col-xs-6'>" . $linha["rating_n"] / $linha["rating_sum"] . "</div>";
+        } else {
+            echo "<div class='col-md-6 col-xs-6'>0.00</div>";
+        }
+
         echo "</div>";
     }
 } else {
     echo "<div class='alert alert-danger'>Could not establish connection.</div>";
 }
-
+echo '</div>';
 
 function download($conn, $media_id, $s3)
 {
@@ -156,15 +161,20 @@ function download($conn, $media_id, $s3)
     }
     $url = "http://musicprojectofinal.s3.amazonaws.com/" . $file_name;
 
-    echo "<a href='" . $url . "'>Download</a>";
+
     if ($song == 1) {
+        echo '<a class="col-sm-2 col-xs-12" href="' . $url . '"><img style="height: 50px; width: 50px" src="img/532.png"></a>';
+        echo "<div class='col-sm-5 col-xs-12'>";
         echo "<audio src='" . $url . "' controls>";
         echo "<div class='alert alert-warning fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Your browser does not support the audio element.</div>";
         echo "</audio>";
+        echo "</div>";
     } else {
-        echo "<video width='320' height='240' controls><source src='" . $url . "'>";
+
+        echo "<div class='col-md-12 col-xs-12'><video width='320' height='240' controls><source src='" . $url . "'>";
         echo "<div class='alert alert-warning fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Your browser does not support the video tag.</div>";
-        echo "</video>";
+        echo "</video></div>";
+        echo '<a class="col-md-4 col-xs-4" href="' . $url . '"><img style="height: 50px; width: 50px" src="img/532.png"></a>';
     }
 
 }
