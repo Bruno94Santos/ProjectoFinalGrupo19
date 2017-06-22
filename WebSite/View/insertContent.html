@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insert Content</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="../Controller/insertContent.js"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/sidenav.css">
+    <div class="page-header">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="dashboard.html">MuseIn</a>
+            <a href="login.html">LogIn</a>
+            <a href="register.html">Register</a>
+            <a href="myartists.html">My Artists</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="concerts.html">Concerts</a>
+            <a href="playlists.html">Playlists</a>
+            <a href="search.html">Search</a>
+
+
+        </div>
+        <span onclick="openNav()"><a href="#" class = "btn btn-default btn-lg" role="button">Menu</a></span>
+    </div>
+</head>
+<body ng-app="myapp">
+<div class="formYes" ng-controller="insertContent">
+    <div class="MusicOrVideo">
+        <br>
+        <label class="radio-inline"><input type="radio" name="optradio" ng-value="1" ng-model="is_song">Music</label>
+        <label class="radio-inline"><input type="radio" name="optradio" ng-value="0" ng-model="is_song">Video</label>
+    </div>
+    <br>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Name</label>
+        <div class="col-10">
+            <input class="form-control" ng-model="song" type="text" placeholder="Media Name" ng-required="string" id="example-text-input">
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Artist</label>
+        <div class="col-10">
+            <input class="form-control" ng-model="artist" type="text" placeholder="Artist" ng-required="string" id="example-text-input">
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <label for="example-search-input" class="col-2 col-form-label">Description</label>
+        <div class="col-10">
+            <input class="form-control" type="text" ng-model="description" placeholder="Description" id="example-search-input">
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-10">
+            <label class="control-label">Select File</label>
+            <input id="input-1" type="file" class="file">
+            <br>
+            <progress value="10" max="100"></progress>
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-10">
+            <button type="submit" class="btn btn-primary" ng-click="insertData()">Submit</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

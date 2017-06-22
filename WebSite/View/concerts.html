@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title>Concerts</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="../Controller/concert.js"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/sidenav.css">
+    <div class="page-header">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="dashboard.html">MuseIn</a>
+            <a href="login.html">LogIn</a>
+            <a href="register.html">Register</a>
+            <a href="myartists.html">My Artists</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="concerts.html">Concerts</a>
+            <a href="playlists.html">Playlists</a>
+            <a href="search.html">Search</a>
+
+
+        </div>
+        <span onclick="openNav()"><a href="#" class = "btn btn-default btn-lg" role="button">Menu</a></span>
+    </div>
+</head>
+<body ng-app="myapp">
+<div class="caption" ng-repeat="x in concerts" ng-controller="concert">
+    <h3> {{x.EventName}} </h3>
+    <p> {{x.EventDescription}} </p>
+    <p> {{x.TicketPrice}} </p>
+    <p><a href="buyTicket.html" class="btn btn-primary" role="button">Buy</a></p>
+</div>
+
+<button ng-click="showMore()">
+Show More
+</button>
+</body>
+</html>

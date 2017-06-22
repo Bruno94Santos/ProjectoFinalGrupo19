@@ -1,0 +1,15 @@
+.line-events{
+	border: solid gainsboro;
+	border-radius: 10px;
+	border-width: 2px;
+	margin-bottom: 2px;
+}
+
+.info{
+	padding-top: 10px;
+}
+
+.main {
+	padding-left: 10%;
+	padding-right: 10%;
+}

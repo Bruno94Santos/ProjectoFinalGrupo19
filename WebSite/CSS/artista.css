@@ -1,0 +1,27 @@
+.glyphicon {
+    margin-bottom: 10px;margin-right: 10px;
+}
+
+small {
+    display: block;
+    line-height: 1.428571429;
+    color: #999;
+}
+
+#outer
+{
+    width:100%;
+    text-align: center;
+}
+.inner
+{
+    display: inline-block;
+    padding:5%;
+}
+.panel{
+    margin:1%;
+}
+.events{
+    display: block;
+    margin-left: 9%;
+}

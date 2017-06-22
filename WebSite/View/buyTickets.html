@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insert Content</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="../Controller/buyTickets.js"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/sidenav.css">
+    <div class="page-header">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="dashboard.html">MuseIn</a>
+            <a href="login.html">LogIn</a>
+            <a href="register.html">Register</a>
+            <a href="myartists.html">My Artists</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="concerts.html">Concerts</a>
+            <a href="playlists.html">Playlists</a>
+            <a href="search.html">Search</a>
+
+
+        </div>
+        <span onclick="openNav()"><a href="#" class = "btn btn-default btn-lg" role="button">Menu</a></span>
+    </div>
+</head>
+<body ng-app="myapp">
+<div class="formYes">
+
+    <form method="post" enctype="application/x-www-form-urlencoded" ng-controller="buyTickets">
+
+        <p>
+            <label>Name
+                <input type="text" name="customer_name" ng-model="name" required>
+            </label>
+            <label>Surname
+                <input type="text" name="customer_name" ng-model="surname" required>
+            </label>
+        </p>
+
+        <p>
+            <label>Phone
+                <input type="tel" name="phone_number" ng-model="phone">
+            </label>
+        </p>
+
+        <p>
+            <label>Email
+                <input type="email" name="email_address" ng-model="email">
+            </label>
+        </p>
+        <p>
+            <label>Adress
+                <input type="text" name="adress" ng-model="adress">
+            </label>
+        </p>
+
+        <br>
+
+        <p>
+            <label>Card type
+                <select id="pickup_place" name="pickup_place">
+                    <option value="" selected="selected">Select One</option>
+                    <option value="visa">Visa</option>
+                    <option value="mastercard">MasterCard</option>
+                    <option value="visaelectron">VisaElectron</option>
+                </select>
+            </label>
+        </p>
+
+        <p>
+            <label>Card number
+                <input type="datetime-local" name="pickup_time" required>
+            </label>
+        </p>
+
+
+        <p>
+            <label>CVV
+                <input type="int" name="dropoff_place">
+            </label>
+        </p>
+        <p>
+            <label>Name on card
+                <input type="text" name="customer_name" required>
+            </label>
+        </p>
+
+
+        <p>
+            <label>Special Instructions
+                <textarea name="comments" maxlength="500"></textarea>
+            </label>
+        </p>
+
+        <p>
+            <button type="submit" class="btn btn-primary" ng-click="insertData()">Submit Booking</button>
+        </p>
+
+    </form>
+
+</div>
+
+
+
+</body>
+</html>

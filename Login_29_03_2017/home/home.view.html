@@ -1,0 +1,25 @@
+<h1>Welcome to MusIn <!--{{vm.user.firstName}}-->!</h1>
+<p>You're logged in!!</p>
+<h3>All registered users:</h3>
+<ul>
+    <li ng-repeat="user in vm.allUsers">
+        {{user.username}} ({{user.email}})
+        - <a ng-click="vm.deleteUser(user.id)">Delete</a>
+    </li>
+</ul>
+<!--
+<div>
+  <form>
+    <input type ="file" file-input="files" onchange="angular.elemnent(this).scope().filesChanged(this)" multiple />
+    <button ng-click="upload()">Upload</button>
+    <li ng-repeat="file in files">
+      {{file.name}}
+    </li>
+  </form>
+</div>
+-->
+<p>&nbsp;</p>
+<p><a href="#!/login" class="btn btn-primary">Logout</a></p>
+<p><a href="#!/createArtist" class="btn btn-primary">Create Page of Artist</a></p>
+<!-- por fazer -->
+<p><a href="#!/pageArtist" class="btn btn-primary">View Page of Artist</a></p>

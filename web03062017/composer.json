@@ -1,0 +1,10 @@
+{
+  "require": {
+    "aws/aws-sdk-php": "2.7.*"
+  },
+  "autoload": {
+    "classmap": [
+      "S3.php"
+    ]
+  }
+}

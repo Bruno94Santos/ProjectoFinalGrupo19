@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title>Artists</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="../Controller/artists.js"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/sidenav.css">
+    <div class="page-header">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="dashboard.html">MuseIn</a>
+        <a href="login.html">LogIn</a>
+        <a href="register.html">Register</a>
+        <a href="myartists.html">My Artists</a>
+        <a href="favourites.html">Favourites</a>
+        <a href="concerts.html">Concerts</a>
+        <a href="playlists.html">Playlists</a>
+        <a href="search.html">Search</a>
+
+
+    </div>
+    <span onclick="openNav()"><a href="#" class = "btn btn-default btn-lg" role="button">Menu</a></span>
+    </div>
+</head>
+<body>
+<div class="caption" ng-repeat="x in artists" ng-controller="artists">
+    <h3> {{x.ArtistName}} </h3>
+    <p> {{x.ArtistDescription}} </p>
+    <p> {{x.ArtistLocation}} </p>
+    <p> {{x.ArtistPicture}} </p>
+    <p><a href="artist.html" class="btn btn-primary" role="button">View Artist</a></p>
+</div>
+
+<button ng-click="showMore()">
+    Show More
+</button>
+
+</body>
+</html>

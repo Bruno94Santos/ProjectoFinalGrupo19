@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="../Controller/artist.js"></script>
+    <title>Profile</title>
+</head>
+<body>
+    <div class="container" ng-controller="artist">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="well well-sm">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <img ng-src="http://{{profile.ArtistPicture}}" alt="" class="img-rounded img-responsive" />
+                        </div>
+                        <div class="col-sm-6 col-md-8">
+                            <h4>
+                                {{profile.ArtistName}}</h4>
+                            <small><cite title="San Francisco, USA"> {{profile.ArtistLocation}} <i class="glyphicon glyphicon-map-marker">
+                            </i></cite></small>
+                            <p>{{profile.ArtistDescription}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="caption" ng-repeat="x in music" ng-controller="artist">
+        <h3>{{x.IsSong}}</h3>
+        <p>{{x.Description}}</p>
+        <button ng-click="">Play</button>
+        <button ng-click="">Download</button>
+    </div>
+    <button ng-click="showMusic()">
+        Show More
+    </button>
+</body>
+</html>

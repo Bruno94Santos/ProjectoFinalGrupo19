@@ -1,0 +1,24 @@
+.line_artist{
+	border: solid gainsboro;
+	border-radius: 10px;
+	border-width: 2px;
+	margin-bottom: 2px;
+}
+
+.pic{
+	height: 100px; width: 100px;
+	padding-top: 10px;
+}
+
+@media only screen and (max-width: 500px) {
+	.line_artist{
+		/*background-color: red;*/
+		margin-bottom: 6px;
+	}
+	.line_artist #descricao{
+			display:none;
+	}
+	.pic{
+		height: 60px; width: 60px;
+	}
+}

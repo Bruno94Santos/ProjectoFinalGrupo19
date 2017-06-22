@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head ng-app="myapp">
+    <title>Create Event</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="../Controller/createEvent.js"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/sidenav.css">
+    <div class="page-header">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="dashboard.html">MuseIn</a>
+            <a href="login.html">LogIn</a>
+            <a href="register.html">Register</a>
+            <a href="myartists.html">My Artists</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="concerts.html">Concerts</a>
+            <a href="playlists.html">Playlists</a>
+            <a href="search.html">Search</a>
+
+
+        </div>
+        <span onclick="openNav()"><a href="#" class = "btn btn-default btn-lg" role="button">Menu</a></span>
+    </div>
+</head>
+<body>
+    <div class="formYes" ng-controller="insertEvent">
+        <div class="MusicOrVideo">
+            <br>
+            <label class="radio-inline"><input type="radio" name="optradio" ng-model="concert.choice" ng-value="FALSE">Concert</label>
+            <label class="radio-inline"><input type="radio" name="optradio" ng-model="concert.choice" ng-value="TRUE">Live</label>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Name</label>
+            <div class="col-10">
+                <input class="form-control" ng-model="event_name" type="text" placeholder="Event Name" ng-required="string" id="example-text-input">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-search-input" class="col-2 col-form-label">Location</label>
+            <div class="col-10">
+                <input class="form-control" type="text" ng-model="location" placeholder="Location" id="example-search-input">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-search-input" class="col-2 col-form-label">Description</label>
+            <div class="col-10">
+                <input class="form-control" type="text" ng-model="description" placeholder="Description" id="example-search-input">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-search-input" class="col-2 col-form-label">Date</label>
+            <div class="col-10">
+                <input class="form-control" type="date" ng-model="event_time" placeholder="YYYY-MM-DD" id="example-search-input">
+            </div>
+        </div>
+
+    <!-- DATE PICKER START
+    <md-content ng-controller="AppCtrl as ctrl" layout-padding="" ng-cloak="" class="datepickerdemoBasicUsage" ng-app="MyApp">
+        <div layout-gt-xs="row">
+            <div flex-gt-xs="">
+                <h4>Standard date-picker</h4>
+                <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"></md-datepicker>
+            </div>
+
+            <div flex-gt-xs="">
+                <h4>Disabled date-picker</h4>
+                <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" disabled=""></md-datepicker>
+            </div>
+        </div>
+
+        <div layout-gt-xs="row">
+            <div flex-gt-xs="">
+                <h4>Opening the calendar when the input is focused</h4>
+                <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" md-open-on-focus=""></md-datepicker>
+            </div>
+
+            <div flex-gt-xs="">
+                <h4>Date-picker that goes straight to the year view</h4>
+                <md-datepicker ng-model="ctrl.myDate" md-current-view="year" md-placeholder="Enter date"></md-datepicker>
+            </div>
+        </div>
+
+        <div layout-gt-xs="row">
+            <div flex-gt-xs="">
+                <h4>Custom calendar trigger</h4>
+                <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" md-is-open="ctrl.isOpen"></md-datepicker>
+                <md-button class="md-primary md-raised" ng-click="ctrl.isOpen = true">Open</md-button>
+            </div>
+        </div>
+    </md-content>
+
+    DATE PICKER END-->
+
+    <div class="container">
+        <div class="row col-10" ng-repeat="x in event_tags">
+            <br>
+            <label for="info1" class="btn btn-info">{{x.tag}} <input type="checkbox" id="info1" class="badgebox"><span
+                    class="badge">&check;</span></label>
+
+        </div>
+    </div>
+    <br>
+    <form id="myRadioGroup">
+        Free<input type="radio" checked value="0" ng-model="free.payed"/>
+        Payed<input type="radio" value="1" ng-model="free.payed"/>
+    </form>
+
+    <div id="Pay3" class="desc" ng-show="free.payed == 1">
+        <div class="form-group row">
+            <label for="example-search-input" class="col-2 col-form-label">Ticket number</label>
+            <div class="col-10">
+                <input class="form-control" type="number" ng-model="total_seats" placeholder="100"
+                       class="example-search-input">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-search-input" class="col-2 col-form-label">Ticket Price</label>
+            <div class="col-10">
+                <input class="form-control" type="number" ng-model="price" placeholder="Euro"
+                       class="example-search-input">
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="form-group row">
+    <div class="col-10">
+        <button type="submit" class="btn btn-primary" ng-click="insertData()">Submit</button>
+    </div>
+</div>
+
+</div>
+</body>
+</html>

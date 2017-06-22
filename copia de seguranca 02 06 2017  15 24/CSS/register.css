@@ -1,0 +1,8 @@
+h3{
+	font-size: 13px;
+}
+@media(min-width: 600px){
+	h3{
+		font-size: 25px;// isto tudo e so um exemplo
+	}
+}
