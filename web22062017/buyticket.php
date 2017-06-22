@@ -31,7 +31,7 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 <?php include "header.php"; ?>
 
 <div class="container">
-    <div class="row" style="padding-left: 10%; padding-right: 10%">
+    <div class="row" class="main">
         <div class=".col-xs-6 .col-lg-12">
 
             <?php

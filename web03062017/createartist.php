@@ -40,9 +40,9 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 			else{
 				$_SESSION["artist"]=1;
 			}
-			$name=$_POST["name"];
-			$location=$_POST["location"];
-			$description=$_POST["description"];
+			$name= htmlspecialchars($_POST["name"]);
+			$location=htmlspecialchars($_POST["location"]);
+			$description=htmlspecialchars($_POST["description"]);
 			$picture=$_POST["picture"];
 			//verificar como se faz upload de imagem lol
 			$result = $conn->query("INSERT INTO artists(id,description,picture,location,name,rating_sum,rating_n) VALUES ($user_id,'$description','$picture','$location','$name',0,0)");

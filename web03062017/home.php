@@ -69,9 +69,9 @@ echo "<h4>Popular events</h4>";
     if (isset($_POST['submit'])) {
         header("Location:events.php");
     }
-echo "<br><h4>Popular music</h4>";
+echo "<br><h4>Popular Artists</h4>";
 
-    $result = $conn->query("SELECT * FROM media LIMIT 0,3");
+    $result = $conn->query("SELECT * FROM artists LIMIT 0,3");
     if ($result) {
         while ($linha = $result->fetch_array(MYSQLI_ASSOC)) {
             /*$linha = mysqli_fetch_assoc($result);
@@ -81,23 +81,24 @@ echo "<br><h4>Popular music</h4>";
             echo "<p>" . $linha['media'] . "</p>";
             echo "<p><a href='concert.php?id=" . $linha["id"] . "' class='btn btn-primary' role='button'>More Info</a></p>";
             "</div>";*/
-                echo '<div style=" border: solid gainsboro;border-radius: 10px; border-width: 2px; margin-bottom: 2px;"  class="col-xs-12">
-                <a href="artist.php?id=' . $linha["artist"] . '">
+            echo '<div style=" border: solid gainsboro;border-radius: 10px; border-width: 2px; margin-bottom: 2px;"  class="col-xs-12">
+                <a href="artist.php?id=' . $linha["artist_id"] . '">
                     <div class="col-xs-2">
                     <img class="img-responsive" src="http://placehold.it/100x70">
                     </div>
-                    <div class="col-xs-4">
+                    <div class="col-xs-7">
                         <h4 class="product-name">
-                            <strong>' . $linha['description'] . '</strong>
+                            <strong>' . $linha['name'] . '</strong>
                         </h4>
                         <h4>
-                            <small>' . $linha['media'] . '</small>
+                            <small>' . $linha['description'] . '</small>
                         </h4>
                     </div>
-                    <div class="col-xs-2">';
-                echo '</div>
+                    <div class="col-xs-1">
+                        <strong>' . $linha['location'] . '</strong>
+                    </div>
                 </a>
-            </div><br><br>';
+            </div>';
 
 
         }

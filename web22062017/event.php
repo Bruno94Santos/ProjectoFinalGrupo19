@@ -17,9 +17,9 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 <body>
 <?php include "header.php"; ?>
 <div class="container">
-    <div class="row" style="padding-left: 10%; padding-right: 10%">
+    <div class="row" class="main">
                     <div class="col-md-6 col-xs-12">
-                        <img style="height: 100%; width: 100%" src="http://placehold.it/570x470">
+                        <img class="pic" src="http://placehold.it/570x470">
                         <!--<img src="http://placehold.it/570x470">-->
                     </div>
                     <div class="col-md-6 col-xs-12">
@@ -66,14 +66,14 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 			}
 		}
                 if ($row['event_over'] == 1) {
-                    echo "<p style='color: red'>This event is over.</p>";
+                    echo "<p class='soldout'>This event is over.</p>";
                 } else {
                     if ($total_seats > $seats_taken) {
 			if($price!='FREE'){
                         echo "<a href='buyticket.php?id=" . $id . "'>Buy ticket</a>";
                     }
 		    } else {
-                        echo "<p style='color: red'>This event is currently sold out.</p>";
+                        echo "<p class='soldout'>This event is currently sold out.</p>";
                     }
                 }
 		if($jam==1 && $sold_out==0){

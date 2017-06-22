@@ -134,7 +134,7 @@ echo gettracks($playlist_id,$conn);
         extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
         loadTrack(index);
     }
-});</script>" //////////////////
+});</script>"; //////////////////
 			
 		}
 		else{

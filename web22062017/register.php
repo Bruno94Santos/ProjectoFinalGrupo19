@@ -62,7 +62,7 @@ if ($_SESSION["loggedin"] == 0) {
 
 <!-- validar caracteres nos fields do form para nao haver injeccao de codigo-->
 <div class="container" >
-    <div class="row" style="padding-left: 10%; padding-right: 10%">
+    <div class="row" class="main">
         <div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
             <h4 class="page-header">Register</h4>
             <form action="register.php" method="post">

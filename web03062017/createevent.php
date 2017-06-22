@@ -38,14 +38,14 @@ $user_id = $_SESSION["id"];
         } else {
             $_SESSION["event"] = 1;
         }
-        $event_name = $_POST["name"];
-        $event_time = $_POST["datetime"];
-        $location = $_POST["location"];
-        $description = $_POST["description"];
-        $total_seats = $_POST["number"];
-	$price = $_POST["price"];
+        $event_name = htmlspecialchars($_POST["name"]);
+        $event_time = htmlspecialchars($_POST["datetime"]);
+        $location = htmlspecialchars($_POST["location"]);
+        $description = htmlspecialchars($_POST["description"]);
+        $total_seats = htmlspecialchars($_POST["number"]);
+	$price = htmlspecialchars($_POST["price"]);
         $picture = $_POST["picture"];
-	$artist = $_POST["artist"];
+	$artist = htmlspecialchars($_POST["artist"]);
         //verificar como se faz upload de imagem lol
         $result = $conn->query("INSERT INTO events(creator_id,picture,event_name,event_time,location,description, total_seats,seats_taken,price,sold_out,rating_sum,rating_n,is_jam) VALUES ($user_id,'$picture','$event_name','$event_time','$location','$description',$total_seats,0,$price,0,0,0,0)");
         if (!$result) {

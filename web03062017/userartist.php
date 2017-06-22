@@ -11,13 +11,12 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 <head>
     <meta charset="UTF-8">
     <title>Your artist pages</title>
-
+    <?php include "header.php"; ?>
 </head>
 
 <body>
 <?php include "header.php"; ?>
 <?php
-/*echo "<div class='jumbotron'>";*/
 echo "<div class='container'>";
 echo "<h2>My artist pages</h2>";
 if ($_SESSION["is_artist"] == 1) {
@@ -29,23 +28,26 @@ if ($_SESSION["is_artist"] == 1) {
             echo "<div><a href='artist.php?id=" . $linha["artist_id"] . "'>" . $linha["name"] . "</a></div>";
             echo "<div>" . $linha["description"] . "</div>";
             header("Content-type: image/jpeg");
-	    echo "<div><img src='" . $linha["picture"] . "'></div>"; //VER DA IMAGEM
+	    echo '<div class="profile-header-img"><img object-fit: contain" class="img-responsive" src="data:image/*;base64,'. base64_encode($linha["picture"]) . '"/></div>'; //VER DA IMAGEM
+	    //<img class="img-responsive" src="http://placehold.it/100x70">
             //echo "</div>";*/
-            echo '<div style=" border: solid gainsboro;border-radius: 10px; border-width: 2px; margin-bottom: 2px;"  class="col-xs-12">
+            echo '<div class="col-xs-12 line_artist">
                 <a href="artist.php?id=' . $linha["artist_id"] . '">
                     <div class="col-xs-2">
-                    <img class="img-responsive" src="http://placehold.it/100x70">
-                    </div>
+                    <img class="img-responsive pic" src="data:image/*;base64,'. base64_encode($linha["picture"]) . '"/>
+		    </div>
                     <div class="col-xs-7">
                         <h4 class="product-name">
                             <strong>' . $linha['name'] . '</strong>
                         </h4>
-                        <h4>
+                        <h4 id = "descricao">
                             <small>' . $linha['description'] . '</small>
                         </h4>
                     </div>
                     <div class="col-xs-1">
-                        <strong>' . $linha['location'] . '</strong>
+			<h4 class="product-name">
+                            <strong>' . $linha['location'] . '</strong>
+			</h4>
                     </div>
                 </a>
             </div>';

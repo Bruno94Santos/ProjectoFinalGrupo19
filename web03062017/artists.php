@@ -49,10 +49,10 @@ if ($result) {
     echo '<div  class="row center-block">';
     while ($linha = $result->fetch_array(MYSQLI_ASSOC)) {
         /*$linha = mysqli_fetch_assoc($result);*/
-        echo '<div style=" border: solid gainsboro;border-radius: 10px; border-width: 2px; margin-bottom: 2px;"  class="col-xs-12">
+        echo '<div class="col-xs-12 line_artist">
                 <a href="artist.php?id=' . $linha["artist_id"] . '">
                     <div class="col-xs-2">
-                    <img class="img-responsive" src="http://placehold.it/100x70">
+                    <img class="img-responsive pic" src="data:image/*;base64,'. base64_encode($linha["picture"]) . '"/>
                     </div>
                     <div class="col-xs-7">
                         <h4 class="product-name">

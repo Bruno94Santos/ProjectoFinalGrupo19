@@ -76,7 +76,7 @@ else {
 if ($_SESSION["event"] <= 3) {
     ?>
     <div class="container">
-        <div class="row" style="padding-left: 10%; padding-right: 10%; padding-bottom: 10%">
+        <div class="row" class="main">
             <div class=".col-xs-6 .col-lg-12 col-sx-offset-1">
                 <h4 class="page-header">Create event</h4>
 		<form class="createartist" action="" method="post">

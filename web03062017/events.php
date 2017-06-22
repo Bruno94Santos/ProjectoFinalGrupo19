@@ -49,9 +49,7 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
                         <h4 class="product-name">
                             <strong>' . $linha['event_name'] . '</strong>
                         </h4>
-                        <h4>
-                            <small>' . $linha['description'] . '</small>
-                        </h4>
+                        <small>' . $linha['description'] . '</small>
                     </div>
                     <div class="col-xs-2">';
             if ($linha['price'] == 0.00) {
@@ -60,7 +58,7 @@ $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
                 echo '<strong>Price: ' . $linha['price'] . '€ </strong >';
             }
             echo '</div>
-                            <div class="col-xs-2">';
+                  <div class="col-xs-2">';
             if (intval($linha['total_seats']) <= intval($linha['seats_taken'])) {
                 echo '<p style="color: red">Esgotado</p>';
             }
